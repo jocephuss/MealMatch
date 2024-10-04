@@ -13,6 +13,8 @@ import { setContext } from "@apollo/client/link/context";
 //////////////////////////////
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header/index";
+import Navigation from "./components/Navigation/index";
+
 import Footer from "./components/Footer/index";
 
 // Construct our main GraphQL API endpoint
@@ -45,7 +47,8 @@ const App = () => {
 
     <ApolloProvider client={client}>
       <Header />
-      <main className="blkBg">
+      <Navigation />
+      <main>
         <Outlet />
       </main>
       <Footer />
