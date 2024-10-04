@@ -17,10 +17,17 @@ const Navigation = () => {
                   isActive ? "nav-link tabs active" : "nav-link tabs"
                 }
               >
-                Favorite
+                Favorite 
       </NavLink>
       
-      <li>Other things</li>
+      <NavLink
+      to="/"
+                className={({ isActive }) =>
+                  isActive ? "nav-link tabs active" : "nav-link tabs"
+                }
+              >
+                Login
+      </NavLink>
     </ul>
   );
 };

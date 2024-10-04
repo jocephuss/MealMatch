@@ -7,8 +7,8 @@ import App from "./App.jsx";
 import DiscoverPage from "./pages/DiscoverPage";
 import ErrorPage from "./pages/ErrorPage";
 import FavoritePage from "./pages/FavoritePage";
-import LoginPage from "./pages/Login";
-import Signup from "./pages/Signup";
+import AuthenticatePage from "./pages/Authenticate.jsx";
+
 
 import "./index.css";
 
@@ -27,15 +27,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginPage />,
+        element: <AuthenticatePage />,
       },
       {
         path: "/favorite",
         element: <FavoritePage />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
       },
       {
         path: "/home",
