@@ -41,9 +41,13 @@ const client = new ApolloClient({
 
 const App = () => {
   return (
-    <ApolloProvider>
+    //
+
+    <ApolloProvider client={client}>
       <Header />
-      <Outlet />
+      <main className="blkBg">
+        <Outlet />
+      </main>
       <Footer />
     </ApolloProvider>
   );
