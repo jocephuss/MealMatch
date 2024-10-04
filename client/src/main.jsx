@@ -1,12 +1,12 @@
-// import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
-import DiscoverPage from "./pages/DiscoverPage";
-import ErrorPage from "./pages/ErrorPage";
-import FavoritePage from "./pages/FavoritePage"; 
-import LoginPage from "./pages/Login";
-import Signup from "./pages/Signup";
+import App from "./App.jsx";
+import DiscoverPage from "./pages/DiscoverPage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import FavoritePage from "./pages/FavoritePage.jsx"; 
+import LoginPage from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 import "./index.css";
 
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DiscoverPage />
+        element: <LoginPage />
       }, {
         path: '/favorite',
         element: <FavoritePage />
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, {
-        path: '/login',
-        element: <LoginPage />
+        path: '/home',
+        element: <DiscoverPage />
       }, 
     ]
   },
