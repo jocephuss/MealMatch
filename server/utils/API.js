@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-const API_URL = 'https://api.edamam.com/api/food-database/v2/parser';
+const API_URL = 'https://api.edamam.com/api/recipes/v2';
 
 // Fetch food data
 const FoodSearch = async (ingredient) => {
