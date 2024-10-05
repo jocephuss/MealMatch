@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import Navigation from "../Navigation/index";
 // import Auth from '../../utils/auth';
 
 // const Header = () => {
@@ -8,11 +8,7 @@ import { Link } from "react-router-dom";
 //     Auth.logout();
 //   };
 const Header = () => {
-  return (
-    <header>
-      <div>MealMatch baby header</div>
-    </header>
-  );
+  return <Navigation />;
 };
 
 export default Header;
