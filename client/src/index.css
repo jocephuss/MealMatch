@@ -122,7 +122,9 @@ button:hover {
 .center-column {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  text-align: center;
+  text-decoration: underline;
+  width: 85%;
   height: 100%;
   margin: 5px;
   border: solid 2px #333;
@@ -131,7 +133,9 @@ button:hover {
 .center-column2 {
   display: flex;
   flex-direction: row;
-  width: 75%;
+  justify-content: center;
+  text-decoration: underline;
+  width: 85%;
   height: 100%;
   margin: 5px;
   border: solid 2px #333;
@@ -140,6 +144,8 @@ button:hover {
 .left-column {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  text-decoration: underline;
   width: 25%;
   height: 100%;
   margin: 5px;
@@ -149,9 +155,10 @@ button:hover {
 .left-column2 {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  text-align: center;
+  text-decoration: underline;
+  width: 20%;
   height: 100%;
-  margin: 5px;
   border: solid 2px #333;
   border-radius: 10px;
 }
