@@ -40,7 +40,7 @@ const App = ({ handleLogin }) => {
 
       <Outlet />
 
-      <footer>
+      <footer className="Foot">
         <p>MealMatch Footer!</p>
       </footer>
     </>
