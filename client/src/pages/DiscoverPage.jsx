@@ -6,6 +6,7 @@ const DiscoverPage = () => {
     {
       label: "Diet",
       options: [
+        "N/A",
         "Balanced",
         "High-Fiber",
         "High-Protein",
@@ -17,6 +18,7 @@ const DiscoverPage = () => {
     {
       label: "Health",
       options: [
+        "N/A",
         "Alcohol Free",
         "Celery Free",
         "Dairy Free",
@@ -56,11 +58,12 @@ const DiscoverPage = () => {
     },
     {
       label: "Meal",
-      options: ["Breakfast", "Lunch", "Dinner", "Snack", "Brunch"],
+      options: ["N/A", "Breakfast", "Lunch", "Dinner", "Snack", "Brunch"],
     },
     {
       label: "Dishes",
       options: [
+        "N/A",
         "Salad",
         "Main Course",
         "Dessert",
@@ -90,6 +93,7 @@ const DiscoverPage = () => {
     {
       label: "Cuisines",
       options: [
+        "N/A",
         "American",
         "Italian",
         "Mexican",
@@ -142,6 +146,7 @@ const DiscoverPage = () => {
                 </select>
               </div>
             ))}
+            <button className="apply-filters-button">Apply Filters</button>
           </div>
         </div>
       </section>
