@@ -13,8 +13,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
+    addProfile: async (parent, { username, email, password }) => {
+      const profile = await Profile.create({ username, email, password });
       const token = signToken(profile);
 
       return { token, profile };
@@ -23,13 +23,13 @@ const resolvers = {
       const profile = await Profile.findOne({ email });
 
       if (!profile) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User or password not found');
       }
 
       const correctPw = await profile.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User or password not found');
       }
 
       const token = signToken(profile);
