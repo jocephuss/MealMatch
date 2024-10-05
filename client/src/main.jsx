@@ -8,11 +8,10 @@ import ErrorPage from "./pages/ErrorPage";
 import FavoritePage from "./pages/FavoritePage";
 import AuthenticatePage from "./pages/Authenticate.jsx";
 import Signup from "./components/Signup";
-import Login from "./components/Login";
 
 import "./index.css";
 
-const AppWithLoginHandler = ({ handleLogin }) => {
+const LoginHandler = ({ handleLogin }) => {
   return <App handleLogin={handleLogin} />;
 };
 
@@ -21,7 +20,7 @@ const handleLogin = () => {};
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppWithLoginHandler handleLogin={handleLogin} />,
+    element: <LoginHandler handleLogin={handleLogin} />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -39,10 +38,6 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <DiscoverPage />,
-      },
-      {
-        path: "/login",
-        element: <Login onLogin={handleLogin} />,
       },
     ],
   },

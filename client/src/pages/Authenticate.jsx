@@ -11,14 +11,12 @@ const AuthenticatePage = () => {
 
   return (
     <div>
-      <h1>{isLogin ? "Login" : "Signup"}</h1>
+      {/* <h1>{isLogin ? "Login" : "Signup"}</h1> */}
       {isLogin ? <Login /> : <Signup />}
-      <p>
+      {/* <p>
         {isLogin ? "Don't have an account?" : "Already have an account?"}
-        <button onClick={toggleAuthMode}>
-          {isLogin ? "Signup" : "Login"}
-        </button>
-      </p>
+        <button onClick={toggleAuthMode}>{isLogin ? "Signup" : "Login"}</button>
+      </p> */}
     </div>
   );
 };

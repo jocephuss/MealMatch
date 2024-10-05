@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Signing up with:", { email, password, username });
+
+    navigate("/home");
   };
 
   return (
@@ -17,7 +21,6 @@ const Signup = () => {
         <input
           type="email"
           placeholder="Email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -25,7 +28,6 @@ const Signup = () => {
         <input
           type="username"
           placeholder="Username"
-          pattern="^[a-zA-Z0-9]{6,}$"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -33,7 +35,6 @@ const Signup = () => {
         <input
           type="password"
           placeholder="Password"
-          pattern="[a-zA-Z0-9]{8,}$"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -41,7 +42,7 @@ const Signup = () => {
         <button type="submit">Sign Up</button>
       </form>
       <p className="login-link">
-        Already have an account? <a href="/login">Log in!</a>
+        Already have an account? <a href="/">Log in!</a>
       </p>
     </div>
   );
