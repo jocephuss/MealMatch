@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const AuthenticatePage = () => {
   const [isLogin, setIsLogin] = useState(true); // state to toggle between login and signup
