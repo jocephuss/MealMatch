@@ -7,7 +7,7 @@ import DiscoverPage from "./pages/DiscoverPage";
 import ErrorPage from "./pages/ErrorPage";
 import FavoritePage from "./pages/FavoritePage";
 import AuthenticatePage from "./pages/Authenticate.jsx";
-import Signup from "./components/Signup";
+import Signup from "./pages/Signup.jsx";
 
 import "./index.css";
 
