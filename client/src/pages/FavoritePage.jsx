@@ -3,9 +3,19 @@ import Header from "../components/Header";
 
 const FavoritePage = () => {
   return (
-    <div className="Favs">
+    <div className="Main">
       <Header />
-      <div>Is this working favotite?!</div>
+      <section className="discover-main">
+        <div className=" left-column2">
+          <h2>Recents</h2>
+        </div>
+        <div className="center-column2">
+          <h2>Categories</h2>
+        </div>
+        {/* <div className="right-column">
+          <h2>Friends/Shared</h2>
+        </div> */}
+      </section>
     </div>
   );
 };
