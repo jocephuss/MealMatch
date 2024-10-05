@@ -11,21 +11,19 @@ import Signup from "./pages/Signup.jsx";
 
 import "./index.css";
 
-const LoginHandler = ({ handleLogin }) => {
-  return <App handleLogin={handleLogin} />;
+const handleLogin = () => {
+  console.log("User logged in");
 };
-
-const handleLogin = () => {};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoginHandler handleLogin={handleLogin} />,
+    element: <App handleLogin={handleLogin} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <AuthenticatePage />,
+        element: <AuthenticatePage onLogin={handleLogin} />,
       },
       {
         path: "/signup",

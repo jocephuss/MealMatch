@@ -2,21 +2,21 @@ import { useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 
-const AuthenticatePage = () => {
-  const [isLogin, setIsLogin] = useState(true); // state to toggle between login and signup
+const AuthenticatePage = ({ onLogin }) => {
+  const [isLogin, setIsLogin] = useState(true);
 
   const toggleAuthMode = () => {
-    setIsLogin(!isLogin); // toggle between login and signup modes
+    setIsLogin(!isLogin);
   };
 
   return (
     <div>
-      {/* <h1>{isLogin ? "Login" : "Signup"}</h1> */}
-      {isLogin ? <Login /> : <Signup />}
-      {/* <p>
+      {isLogin ? <Login onLogin={onLogin} /> : <Signup />}{" "}
+      {/* Pass onLogin to Login */}
+      <p>
         {isLogin ? "Don't have an account?" : "Already have an account?"}
         <button onClick={toggleAuthMode}>{isLogin ? "Signup" : "Login"}</button>
-      </p> */}
+      </p>
     </div>
   );
 };
