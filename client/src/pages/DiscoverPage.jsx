@@ -6,14 +6,14 @@ import axios from "axios";
 
 
 const DiscoverPage = () => {
-  const [filterValues, setFilterValues] = useState({
-    // ingredient: '',
-    diet: "",
-    health: "",
-    meal: "",
-    dishes: "",
-    cuisines: "",
-  })
+  // const [filterValues, setFilterValues] = useState({
+  //   // ingredient: '',
+  //   diet: "",
+  //   health: "",
+  //   meal: "",
+  //   dishes: "",
+  //   cuisines: "",
+  // })
 
   const filters = [
     // search for sepecific ingredients can be later
@@ -138,13 +138,13 @@ const DiscoverPage = () => {
     },
   ];
 
-  const handleFilterChange = (event, label) => {
-    const {value} = event.target;
-    setFilterValues((prev) ({
-      ...prev,
-      [label.toLowerCase()]: value === "N/A" ? "": value,
-    }))
-  };
+  // const handleFilterChange = (event, label) => {
+  //   const {value} = event.target;
+  //   setFilterValues((prev) ({
+  //     ...prev,
+  //     [label.toLowerCase()]: value === "N/A" ? "": value,
+  //   }))
+  // };
 
   // applyFilters = async () => {
   //   const apiUrl = 
