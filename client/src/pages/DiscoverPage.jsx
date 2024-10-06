@@ -1,19 +1,18 @@
 import React from "react";
 import Header from "../components/Header";
 import DiscoverTile from "../components/DiscoverTiles";
-import axios from "axios";
-
-
+// import FoodSearch from "../../../server/utils/API";
 
 const DiscoverPage = () => {
+  // // State to store filter values
   // const [filterValues, setFilterValues] = useState({
-  //   // ingredient: '',
-  //   diet: "",
-  //   health: "",
-  //   meal: "",
-  //   dishes: "",
-  //   cuisines: "",
-  // })
+  //   ingredient: "",
+  //   diet: "N/A",
+  //   health: "N/A",
+  //   cuisineType: "N/A",
+  //   mealType: "N/A",
+  //   dishType: "N/A",
+  // });
 
   const filters = [
     // search for sepecific ingredients can be later
@@ -23,132 +22,144 @@ const DiscoverPage = () => {
     // },
     {
       label: "Diet",
-      type: "select", 
+      type: "select",
       options: [
         "N/A",
-        "Balanced",
-        "High-Fiber",
-        "High-Protein",
-        "Low-Carb",
-        "Low-Fat",
-        "Low-Sodium",
-      ],
-    },
-    {
-      label: "Health",
-      options: [
-        "N/A",
-        "Alcohol Free",
-        "Celery Free",
-        "Dairy Free",
-        "Gluten Free",
-        "Vegan",
-        "Vegetarian",
-        "Crustacean Free",
-        "DASH",
-        "Egg Free",
-        "Fish Free",
-        "FODMAP Free",
-        "Immuno supportive",
-        "Keto friendly",
-        "Kidney friendly",
-        "Kosher",
-        "Low Potassium",
-        "Low ugar",
-        "Lupine free",
-        "Mediterranean",
-        "Mollusk free",
-        "Mustard free",
-        "No-oil added",
-        "Paleo",
-        "Peanut free",
-        "Pescatarian",
-        "Pork free",
-        "Red-meat free",
-        "Sesame free",
-        "Shellfish free",
-        "Soy free",
-        "Sugar conscious",
-        "Tree nut free",
-        "Vegan friendly",
-        "Wheat free",
-        "Vegitarian friendly",
-      ],
-    },
-    {
-      label: "Meal",
-      options: ["N/A", "Breakfast", "Lunch", "Dinner", "Snack", "Brunch"],
-    },
-    {
-      label: "Dishes",
-      options: [
-        "N/A",
-        "Salad",
-        "Main Course",
-        "Dessert",
-        "Drink",
-        "Alcohol-Cocktail",
-        "Biscuits and Cookies",
-        "Bread",
-        "Cereals",
-        "Condiments and Sauces",
-        "Egg",
-        "Ice cream and Custard",
-        "Pancakes",
-        "Pastas",
-        "Pastry",
-        "Pies and Tarts",
-        "Pizza",
-        "Preps",
-        "Perserves",
-        "Sanwiches",
-        "Seafood",
-        "Sides",
-        "Soups",
-        "Starters",
-        "Sweets",
+        "balanced",
+        "high-fiber",
+        "high-protein",
+        "low-carb",
+        "low-fat",
+        "low-sodium",
       ],
     },
     {
       label: "Cuisines",
       options: [
         "N/A",
-        "American",
-        "Italian",
-        "Mexican",
-        "Indian",
-        "Chinese",
-        "Asian",
-        "British",
-        "Caribbean",
-        "Central Europe",
-        "Eastern Europe",
-        "French",
-        "Greek",
-        "Japanese",
-        "Korean",
-        "Kosher",
+        "american",
+        "asian",
+        "british",
+        "caribbean",
+        "central europe",
+        "chinese",
+        "eastern europe",
+        "french",
+        "greek",
+        "indian",
+        "italian",
+        "japanese",
+        "korean",
+        "kosher",
+        "mediterranean",
+        "mexican",
+        "middle eastern",
+        "nordic",
+        "south american",
+        "southeast asian",
+        "world",
+      ],
+    },
+    {
+      label: "Health",
+      options: [
+        "N/A",
+        "alcohol-free",
+        "celery-free",
+        "dairy-free",
+        "gluten-free",
+        "vegan",
+        "vegetarian",
+        "crustacean-free",
+        "DASH",
+        "egg-free",
+        "fish-free",
+        "fodmap-free",
+        "immuno-supportive",
+        "keto-friendly",
+        "kidney-friendly",
+        "kosher",
+        "low-Potassium",
+        "low-sugar",
+        "lupine-free",
         "Mediterranean",
-        "Middle Eastern",
-        "Nordic",
-        "South American",
-        "Southeast Asian",
-        "World",
+        "mollusk-free",
+        "Mustard free",
+        "No-oil-added",
+        "paleo",
+        "peanut-free",
+        "pescatarian",
+        "pork-free",
+        "red-meat-free",
+        "sesame-free",
+        "shellfish-free",
+        "soy-free",
+        "sugar-conscious",
+        "tree-nut-free",
+        "vegan",
+        "vegetarian",
+        "wheat-free",
+      ],
+    },
+    {
+      label: "Meal",
+      options: [
+        "N/A",
+        "breakfast",
+        "lunch",
+        "dinner",
+        "snack",
+        "brunch",
+        "teatime",
+      ],
+    },
+    {
+      label: "Dishes",
+      options: [
+        "N/A",
+        "alcohol cocktail",
+        "biscuits and cookies",
+        "bread",
+        "cereals",
+        "condiments and sauces",
+        "dessert",
+        "drink",
+        "egg",
+        "ice cream and custard",
+        "main course",
+        "pancakes",
+        "pastas",
+        "pastry",
+        "pies and tarts",
+        "pizza",
+        "preps",
+        "perserve",
+        "salad",
+        "sanwiches",
+        "seafood",
+        "side dish",
+        "soups",
+        "starter",
+        "sweets",
       ],
     },
   ];
 
-  // const handleFilterChange = (event, label) => {
-  //   const {value} = event.target;
-  //   setFilterValues((prev) ({
-  //     ...prev,
-  //     [label.toLowerCase()]: value === "N/A" ? "": value,
-  //   }))
+  // // Handle filter changes
+  // const handleFilterChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFilterValues({
+  //     ...filterValues,
+  //     [name]: value !== "N/A" ? value : "",
+  //   });
   // };
 
-  // applyFilters = async () => {
-  //   const apiUrl = 
-  // }
+  // // Apply filters by calling the FoodSearch API
+  // const applyFilters = () => {
+  //   const { ingredient, diet, health, cuisineType, mealType, dishType } =
+  //     filterValues;
+  //   FoodSearch(ingredient, diet, health, cuisineType, mealType, dishType);
+  // };
 
   return (
     <div className="Main">
@@ -188,3 +199,54 @@ const DiscoverPage = () => {
 };
 
 export default DiscoverPage;
+
+// {/* <div className="Main">
+// <Header />
+// <section className="discover-main">
+//   <div className="left-column">
+//     <h2>Recents</h2>
+//     {/* Add content for recents here */}
+//   </div>
+//   <div className="center-column">
+//     <h2>Discover</h2>
+//     {/* Add content for discovering recipes here */}
+//     <DiscoverTile />
+//   </div>
+//   <div className="right-column">
+//     <h2>Filters</h2>
+//     <div className="filter-dropdowns">
+//       {filters.map((filter, index) => (
+//         <div key={index} className="filter-dropdown">
+//           <label htmlFor={filter.label}>{filter.label}</label>
+//           {/* Check if it's a text input or a select dropdown */}
+//           {filter.type === "text" ? (
+//             <input
+//               type="text"
+//               id={filter.label}
+//               name="ingredient" // Make sure name matches the state key
+//               value={filterValues.ingredient}
+//               onChange={handleFilterChange}
+//             />
+//           ) : (
+//             <select
+//               id={filter.label}
+//               name={filter.label.toLowerCase()} // Ensure the name matches the state key
+//               value={filterValues[filter.label.toLowerCase()]}
+//               onChange={handleFilterChange}
+//             >
+//               {filter.options.map((option, optionIndex) => (
+//                 <option key={optionIndex} value={option}>
+//                   {option}
+//                 </option>
+//               ))}
+//             </select>
+//           )}
+//         </div>
+//       ))}
+//       <button className="apply-filters-button" onClick={applyFilters}>
+//         Apply Filters
+//       </button>
+//     </div>
+//   </div>
+// </section>
+// </div> */}
