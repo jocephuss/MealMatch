@@ -10,12 +10,12 @@ const FoodSearch = async ( diet, health, cuisineType, mealType, dishType ) => { 
             params: {
                 app_id: process.env.REACT_APP_EDAMAM_APP_ID,
                 app_key: process.env.REACT_APP_EDAMAM_APP_KEY,
-                // q: ingredient,
-                diet: diet || undefined, // Only include if a value is provided
-                health: health || undefined,
-                cuisineType: cuisineType || undefined,
-                mealType: mealType || undefined,
-                dishType: dishType || undefined,
+                q: ingredient || undefined,
+                diet: diet !== "N/A" ? diet : undefined, // Only include if a value is provided
+                health: health  !== "N/A" ? health : undefined,
+                cuisineType: cuisineType  !== "N/A" ? cuisineType : undefined,
+                mealType: mealType  !== "N/A" ? mealType : undefined,
+                dishType: dishType  !== "N/A" ? dishType : undefined,
                 imageSize: 'REGULAR',
                 random: true,
                 beta: false,
