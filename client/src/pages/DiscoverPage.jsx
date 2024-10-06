@@ -133,6 +133,7 @@ const DiscoverPage = () => {
         </div>
         <div className="right-column">
           <h2>Filters</h2>
+          {/* should we make this a form so we can accept the dropdowns as inputs -Bryan */}
           <div className="filter-dropdowns">
             {filters.map((filter, index) => (
               <div key={index} className="filter-dropdown">
