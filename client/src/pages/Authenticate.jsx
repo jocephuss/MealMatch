@@ -13,10 +13,10 @@ const AuthenticatePage = ({ onLogin }) => {
     <div>
       {isLogin ? <Login onLogin={onLogin} /> : <Signup />}{" "}
       {/* Pass onLogin to Login */}
-      <p>
+      {/* <p>
         {isLogin ? "Don't have an account?" : "Already have an account?"}
         <button onClick={toggleAuthMode}>{isLogin ? "Signup" : "Login"}</button>
-      </p>
+      </p> */}
     </div>
   );
 };
