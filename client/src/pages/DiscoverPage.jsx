@@ -1,10 +1,29 @@
 import React from "react";
 import Header from "../components/Header";
+import DiscoverTile from "../components/DiscoverTiles";
+import axios from "axios";
+
+
 
 const DiscoverPage = () => {
+  const [filterValues, setFilterValues] = useState({
+    // ingredient: '',
+    diet: "",
+    health: "",
+    meal: "",
+    dishes: "",
+    cuisines: "",
+  })
+
   const filters = [
+    // search for sepecific ingredients can be later
+    // {
+    //   label: "Ingredient",
+    //   type: "text",
+    // },
     {
       label: "Diet",
+      type: "select", 
       options: [
         "N/A",
         "Balanced",
@@ -119,6 +138,18 @@ const DiscoverPage = () => {
     },
   ];
 
+  const handleFilterChange = (event, label) => {
+    const {value} = event.target;
+    setFilterValues((prev) ({
+      ...prev,
+      [label.toLowerCase()]: value === "N/A" ? "": value,
+    }))
+  };
+
+  // applyFilters = async () => {
+  //   const apiUrl = 
+  // }
+
   return (
     <div className="Main">
       <Header />
@@ -130,6 +161,7 @@ const DiscoverPage = () => {
         <div className="center-column">
           <h2>Discover</h2>
           {/* Add content for discovering recipes here */}
+          <DiscoverTile />
         </div>
         <div className="right-column">
           <h2>Filters</h2>

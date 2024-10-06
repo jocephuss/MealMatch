@@ -25,7 +25,7 @@ const FoodSearch = async (ingredient, diet, health, cuisineType, mealType, dishT
         console.log()
         console.log('Food search:', response.data.hits[0]);
 
-        //title
+        
         console.log('Title:', response.data.hits[0].recipe.label);
         console.log('Food image url:', response.data.hits[0].recipe.image);
         console.log('External URL:', response.data.hits[0].recipe.url);
@@ -40,8 +40,8 @@ const FoodSearch = async (ingredient, diet, health, cuisineType, mealType, dishT
         console.error('Error fetching food data:', error);
     }
 };
-
-FoodSearch('Chicken', 'balanced', 'peanut-free', 'American', 'Dinner', 'Main course', 'Main course' );
+// hardcode for testing
+// FoodSearch('Chicken', 'balanced', 'peanut-free', 'American', 'Dinner', 'Main course', 'Main course' );
 
 module.exports = FoodSearch;
 //  to call const FoodSearch = require('./filepath');

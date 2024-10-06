@@ -200,8 +200,8 @@ select {
   align-items: center;
   width: 25%;
   height: auto;
-  margin: 5px;
-  padding: 5px;
+  margin: 0px,5px,5px,5px;
+  padding: 0px,5px,5px,5px;
   margin-bottom: auto;
   border: solid 2px #333;
   border-radius: 10px;
