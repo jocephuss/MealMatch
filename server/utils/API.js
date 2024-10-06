@@ -4,13 +4,13 @@ const axios = require('axios');
 const API_URL = 'https://api.edamam.com/api/recipes/v2?type=public';
 
 // Fetch food data
-const FoodSearch = async (ingredient, diet, health, cuisineType, mealType, dishType ) => {
+const FoodSearch = async ( diet, health, cuisineType, mealType, dishType ) => { // ingredient,
     try {
         const response = await axios.get(API_URL, {
             params: {
                 app_id: process.env.REACT_APP_EDAMAM_APP_ID,
                 app_key: process.env.REACT_APP_EDAMAM_APP_KEY,
-                q: ingredient,
+                // q: ingredient,
                 diet: diet || undefined, // Only include if a value is provided
                 health: health || undefined,
                 cuisineType: cuisineType || undefined,
@@ -45,7 +45,7 @@ const FoodSearch = async (ingredient, diet, health, cuisineType, mealType, dishT
     }
 };
 //       ( ingredient,   diet,       health,     cuisinetype, mealtype,   dishtype  )
-FoodSearch('', '', '', '', '', '');
+// FoodSearch('', '', '', '', '', '');
 
 module.exports = FoodSearch;
 //  to call const FoodSearch = require('./filepath');
