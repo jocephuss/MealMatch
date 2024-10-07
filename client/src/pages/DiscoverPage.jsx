@@ -1,18 +1,22 @@
 import React from "react";
 import Header from "../components/Header";
-import DiscoverTile from "../components/DiscoverTiles";
+// import DiscoverTile from "../components/DiscoverTiles";
+import {useState } from "react";
+
 // import FoodSearch from "../../../server/utils/API";
+// const FoodSearch = require("../../../server/utils/API");
+
 
 const DiscoverPage = () => {
   // // State to store filter values
-  // const [filterValues, setFilterValues] = useState({
-  //   ingredient: "",
-  //   diet: "N/A",
-  //   health: "N/A",
-  //   cuisineType: "N/A",
-  //   mealType: "N/A",
-  //   dishType: "N/A",
-  // });
+  const [filterValues, setFilterValues] = useState({
+    // ingredient: "",
+    diet: "",
+    health: "",
+    cuisineType: "",
+    mealType: "",
+    dishType: "",
+  });
 
   const filters = [
     // search for sepecific ingredients can be later
@@ -145,21 +149,21 @@ const DiscoverPage = () => {
     },
   ];
 
-  // // Handle filter changes
-  // const handleFilterChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFilterValues({
-  //     ...filterValues,
-  //     [name]: value !== "N/A" ? value : "",
-  //   });
-  // };
+  // Handle filter changes
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilterValues({
+      ...filterValues,
+      [name]: value !== "N/A" ? value : "",
+    });
+  };
 
-  // // Apply filters by calling the FoodSearch API
-  // const applyFilters = () => {
-  //   const { ingredient, diet, health, cuisineType, mealType, dishType } =
-  //     filterValues;
-  //   FoodSearch(ingredient, diet, health, cuisineType, mealType, dishType);
-  // };
+  // Apply filters by calling the FoodSearch API
+  const applyFilters = () => {
+    const { ingredient, diet, health, cuisineType, mealType, dishType } =
+      filterValues;
+    FoodSearch(ingredient, diet, health, cuisineType, mealType, dishType);
+  };
 
   return (
     <div className="Main">
@@ -172,7 +176,13 @@ const DiscoverPage = () => {
         <div className="center-column">
           <h2>Discover</h2>
           {/* Add content for discovering recipes here */}
-          <DiscoverTile />
+          <div>
+      <p>Title Placeholder</p>
+      <p>image placeholder</p>
+      {/* make the buttons similar sizes */}
+      <button type="button">Dislike</button>
+      <button type="button">Like</button>
+    </div>
         </div>
         <div className="right-column">
           <h2>Filters</h2>
@@ -181,7 +191,7 @@ const DiscoverPage = () => {
             {filters.map((filter, index) => (
               <div key={index} className="filter-dropdown">
                 <label htmlFor={filter.label}>{filter.label}</label>
-                <select id={filter.label}>
+                <select id={filter.label} onChange={handleFilterChange}>
                   {filter.options.map((option, optionIndex) => (
                     <option key={optionIndex} value={option}>
                       {option}
@@ -190,7 +200,7 @@ const DiscoverPage = () => {
                 </select>
               </div>
             ))}
-            <button className="apply-filters-button">Apply Filters</button>
+            <button className="apply-filters-button" onClick={applyFilters}>Apply Filters</button>
           </div>
         </div>
       </section>
