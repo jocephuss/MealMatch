@@ -5,11 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "develop": "concurrently \"nodemon server/server.js\" \"npm run start \"  \"cd client && npm run dev\"",
+    "develop": "concurrently \"nodemon server/server.js\" \"npm run start \"  \"cd client && npm run dev\" ",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
-    "render-build": "npm install && npm run build",
-    "api": "node server/utils/API.js"
+    "render-build": "npm install && npm run build"
   },
   "keywords": [],
   "author": "",
