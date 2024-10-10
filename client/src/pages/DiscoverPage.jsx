@@ -18,7 +18,6 @@ const DiscoverPage = () => {
   const filters = [
     {
       label: "Diet",
-      type: "select",
       options: [
         "N/A",
         "balanced",
