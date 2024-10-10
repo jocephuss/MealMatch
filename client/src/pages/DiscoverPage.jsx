@@ -14,6 +14,7 @@ const DiscoverPage = () => {
   });
 
   const [recipes, setRecipes] = useState([]); // Store fetched recipes
+  const [recentRecipes, setRecentRecipes] = useState([]); // Store liked recipes
 
   const filters = [
     {
@@ -155,10 +156,24 @@ const DiscoverPage = () => {
       const response = await axios.get("/api/recipes", {
         params: filterValues,
       });
-      setRecipes(response.data); // Store the fetched recipes
+      if (response.data.length > 0) {
+        setRecipes([response.data[0]]); // Only store the first result
+      }
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
+  };
+
+  // Handle liking a recipe
+  const handleLike = (recipe) => {
+    setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
+    fetchRecipes(); // Fetch a new recipe
+  };
+
+  // Handle disliking or refreshing a recipe
+  const handleDislikeOrRefresh = () => {
+    setRecipes([]); // Clear current recipes
+    fetchRecipes(); // Fetch a new recipe
   };
 
   // Apply filters and fetch recipes
@@ -172,16 +187,23 @@ const DiscoverPage = () => {
       <section className="discover-main">
         <div className="left-column">
           <h2>Recents</h2>
-          {/* Add content for recents here */}
+          {recentRecipes.map((recipe, index) => (
+            <div key={index} className="recent-recipe">
+              <h3>{recipe.recipe.label}</h3>
+              <img src={recipe.recipe.image} alt={recipe.recipe.label} />
+            </div>
+          ))}
         </div>
         <div className="center-column">
           <h2>Discover</h2>
-          {/* Pass recipes as props to DiscoverTile */}
-          <DiscoverTile recipes={recipes} />
+          <DiscoverTile
+            recipes={recipes}
+            onLike={handleLike}
+            onDislikeOrRefresh={handleDislikeOrRefresh}
+          />
         </div>
         <div className="right-column">
           <h2>Filters</h2>
-          {/* Form to select filters */}
           <div className="filter-dropdowns">
             {filters.map((filter, index) => (
               <div key={index} className="filter-dropdown">
