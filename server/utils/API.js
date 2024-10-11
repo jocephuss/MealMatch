@@ -4,7 +4,7 @@ const axios = require("axios");
 const API_URL = "https://api.edamam.com/api/recipes/v2?type=public";
 
 // Fetch food data
-const FoodSearch = async (diet, health, cuisineType, mealType, dishType) => {
+const FoodSearch = async (diet, health, cuisineType, mealType, dishType, q) => {
   try {
     const response = await axios.get(API_URL, {
       params: {
@@ -15,18 +15,12 @@ const FoodSearch = async (diet, health, cuisineType, mealType, dishType) => {
         cuisineType: cuisineType || undefined,
         mealType: mealType || undefined,
         dishType: dishType || undefined,
+        q: q || undefined, // Add ingredient search if provided
         imageSize: "REGULAR",
         random: true,
         beta: false,
       },
     });
-
-    // Console logging all exports I would like to use on discover page.
-    const indexNum = response.data.hits.length;
-    console.log("length: ", indexNum);
-    for (let i = 0; i < indexNum; i++) {
-      console.log(`Title ${i + 1}: `, response.data.hits[i].recipe.label);
-    }
 
     return response.data.hits; // Return the fetched recipes
   } catch (error) {
@@ -34,4 +28,4 @@ const FoodSearch = async (diet, health, cuisineType, mealType, dishType) => {
   }
 };
 
-module.exports = FoodSearch; // Export the FoodSearch function
+module.exports = FoodSearch;
