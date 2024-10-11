@@ -4,29 +4,31 @@ const DiscoverTile = ({ recipes, onLike, onDislikeOrRefresh }) => {
   return (
     <div>
       {recipes.length > 0 ? (
-        <div className="recipe-tile">
-          <h3>{recipes[0].recipe.label}</h3>
-          <img src={recipes[0].recipe.image} alt={recipes[0].recipe.label} />
-          <p>Servings: {recipes[0].recipe.yield}</p>
-          <a
-            href={recipes[0].recipe.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Recipe
-          </a>
-          <div className="recipe-actions">
-            <button type="button" onClick={() => onDislikeOrRefresh()}>
-              Dislike
-            </button>
-            <button type="button" onClick={() => onLike(recipes[0].recipe)}>
-              Like
-            </button>
-            <button type="button" onClick={() => onDislikeOrRefresh()}>
-              Refresh
-            </button>
+        recipes.map((recipe, index) => (
+          <div key={index} className="recipe-tile">
+            <h3>{recipe.recipe.label}</h3>
+            <img src={recipe.recipe.image} alt={recipe.recipe.label} />
+            <p>Servings: {recipe.recipe.yield}</p>
+            <a
+              href={recipe.recipe.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Recipe
+            </a>
+            <div className="recipe-actions">
+              <button type="button" onClick={() => onDislikeOrRefresh()}>
+                Dislike
+              </button>
+              <button type="button" onClick={() => onLike(recipe)}>
+                Like
+              </button>
+              <button type="button" onClick={onDislikeOrRefresh}>
+                Refresh
+              </button>
+            </div>
           </div>
-        </div>
+        ))
       ) : (
         <p>No recipes found. Please apply filters.</p>
       )}

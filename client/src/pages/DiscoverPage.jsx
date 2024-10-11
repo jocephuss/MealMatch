@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import DiscoverTile from "../components/DiscoverTiles";
+import RecentRecipes from "../components/Recents/RecentRecipes";
 import axios from "axios"; // Ensure axios is imported
 
 const DiscoverPage = () => {
@@ -16,6 +17,7 @@ const DiscoverPage = () => {
   const [recipes, setRecipes] = useState([]); // Store fetched recipes
   const [recentRecipes, setRecentRecipes] = useState([]); // Store liked recipes
 
+  // Define the filters available for selection
   const filters = [
     {
       label: "Diet",
@@ -187,12 +189,7 @@ const DiscoverPage = () => {
       <section className="discover-main">
         <div className="left-column">
           <h2>Recents</h2>
-          {recentRecipes.map((recipe, index) => (
-            <div key={index} className="recent-recipe">
-              <h3>{recipe.recipe.label}</h3>
-              <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-            </div>
-          ))}
+          <RecentRecipes recentRecipes={recentRecipes} />{" "}
         </div>
         <div className="center-column">
           <h2>Discover</h2>
