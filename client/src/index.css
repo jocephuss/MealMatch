@@ -200,8 +200,8 @@ select {
   align-items: center;
   width: 25%;
   height: auto;
-  margin: 0px,5px,5px,5px;
-  padding: 0px,5px,5px,5px;
+  margin: 0px, 5px, 5px, 5px;
+  padding: 0px, 5px, 5px, 5px;
   margin-bottom: auto;
   border: solid 2px #333;
   border-radius: 10px;
@@ -209,6 +209,29 @@ select {
 
 .right-column h2 {
   text-decoration: underline;
+}
+
+.recent-recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.recent-recipe img {
+  width: 100px;
+  height: 100px;
+}
+
+.recent-recipe h3 {
+  font-size: 1rem;
 }
 
 /* Footer */
@@ -219,4 +242,5 @@ select {
   padding: 10px 20px;
   text-align: center;
   border-top: 1px solid #ccc;
+  z-index: -5;
 }
