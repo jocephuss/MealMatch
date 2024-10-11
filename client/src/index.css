@@ -6,6 +6,19 @@ body {
   height: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(139, 40, 231);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #333;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -244,6 +257,19 @@ select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+.recent-recipes-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.recent-recipes-container::-webkit-scrollbar-thumb {
+  background: rgb(139, 40, 231);
+  border-radius: 10px;
+}
+
+.recent-recipes-container::-webkit-scrollbar-track {
+  background: #333;
 }
 
 /* Footer */
