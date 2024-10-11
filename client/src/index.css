@@ -200,8 +200,7 @@ select {
   align-items: center;
   width: 25%;
   height: auto;
-  margin: 0px, 5px, 5px, 5px;
-  padding: 0px, 5px, 5px, 5px;
+  padding: 5px;
   margin-bottom: auto;
   border: solid 2px #333;
   border-radius: 10px;
@@ -211,6 +210,7 @@ select {
   text-decoration: underline;
 }
 
+/* Recipe CSS below */
 .recent-recipe {
   display: flex;
   flex-direction: column;
@@ -232,6 +232,18 @@ select {
 
 .recent-recipe h3 {
   font-size: 1rem;
+}
+
+.recipe-actions button {
+  margin: 5px;
+}
+
+.recent-recipes-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 /* Footer */
