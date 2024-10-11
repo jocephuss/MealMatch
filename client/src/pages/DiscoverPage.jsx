@@ -12,9 +12,10 @@ const DiscoverPage = () => {
     mealType: "",
     dishType: "",
   });
-
+  const [ingredient, setIngredient] = useState(""); // For ingredient search
   const [recipes, setRecipes] = useState([]); // Store fetched recipes
   const [recentRecipes, setRecentRecipes] = useState([]); // Store liked recipes
+  const [loading, setLoading] = useState(false); // Loading state
 
   const filters = [
     {
@@ -29,7 +30,7 @@ const DiscoverPage = () => {
         "low-sodium",
       ],
     },
-      {
+    {
       label: "Health",
       options: [
         "N/A",
@@ -136,17 +137,31 @@ const DiscoverPage = () => {
     });
   };
 
+  // Handle ingredient change
+  const handleIngredientChange = (e) => {
+    setIngredient(e.target.value);
+  };
+
   // Fetch recipes from the server API
   const fetchRecipes = async () => {
+    setLoading(true); // Show loading indicator
     try {
+      const queryParams = {
+        ...filterValues,
+        q: ingredient || undefined, // Add ingredient to the query
+      };
+
       const response = await axios.get("/api/recipes", {
-        params: filterValues,
+        params: queryParams,
       });
+
       if (response.data.length > 0) {
         setRecipes([response.data[0]]); // Only store the first result
       }
     } catch (error) {
       console.error("Error fetching recipes:", error);
+    } finally {
+      setLoading(false); // Hide loading indicator
     }
   };
 
@@ -182,15 +197,29 @@ const DiscoverPage = () => {
         </div>
         <div className="center-column">
           <h2>Discover</h2>
-          <DiscoverTile
-            recipes={recipes}
-            onLike={handleLike}
-            onDislikeOrRefresh={handleDislikeOrRefresh}
-          />
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <DiscoverTile
+              recipes={recipes}
+              onLike={handleLike}
+              onDislikeOrRefresh={handleDislikeOrRefresh}
+            />
+          )}
         </div>
         <div className="right-column">
           <h2>Filters</h2>
           <div className="filter-dropdowns">
+            <div className="filter-dropdown">
+              <label htmlFor="ingredient">Key Word Search</label>
+              <input
+                id="ingredient"
+                type="text"
+                value={ingredient}
+                onChange={handleIngredientChange}
+                placeholder="e.g., chicken"
+              />
+            </div>
             {filters.map((filter, index) => (
               <div key={index} className="filter-dropdown">
                 <label htmlFor={filter.label}>{filter.label}</label>
