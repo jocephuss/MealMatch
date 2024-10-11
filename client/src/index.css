@@ -224,6 +224,11 @@ select {
 }
 
 /* Recipe CSS below */
+
+.recipe-tile img {
+  border-radius: 10px;
+}
+
 .recent-recipe {
   display: flex;
   flex-direction: column;
@@ -241,6 +246,8 @@ select {
 .recent-recipe img {
   width: 100px;
   height: 100px;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .recent-recipe h3 {
