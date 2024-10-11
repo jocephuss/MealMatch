@@ -97,14 +97,7 @@ const DiscoverPage = () => {
     },
     {
       label: "Meal",
-      options: [
-        "N/A",
-        "breakfast",
-        "lunch",
-        "dinner",
-        "snack",
-        "teatime",
-      ],
+      options: ["N/A", "breakfast", "lunch", "dinner", "snack", "teatime"],
     },
     {
       label: "Dishes",
@@ -173,6 +166,13 @@ const DiscoverPage = () => {
     fetchRecipes(); // Fetch a new recipe
   };
 
+  // Handle removing a liked recipe
+  const handleRemove = (recipeToRemove) => {
+    setRecentRecipes(
+      recentRecipes.filter((recipe) => recipe !== recipeToRemove)
+    );
+  };
+
   // Handle disliking or refreshing a recipe
   const handleDislikeOrRefresh = () => {
     setRecipes([]); // Clear current recipes
@@ -190,7 +190,10 @@ const DiscoverPage = () => {
       <section className="discover-main">
         <div className="left-column">
           <h2>Recents</h2>
-          <RecentRecipes recentRecipes={recentRecipes} />{" "}
+          <RecentRecipes
+            recentRecipes={recentRecipes}
+            onRemove={handleRemove}
+          />{" "}
         </div>
         <div className="center-column">
           <h2>Discover</h2>
@@ -207,8 +210,8 @@ const DiscoverPage = () => {
         <div className="right-column">
           <h2>Filters</h2>
           <div className="filter-dropdowns">
-            <div className="filter-dropdown">
-              <label htmlFor="ingredient">Key Word Search</label>
+            <div className="filter-search">
+              <label htmlFor="ingredient"></label>
               <input
                 id="ingredient"
                 type="text"

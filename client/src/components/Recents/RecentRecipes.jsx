@@ -1,6 +1,6 @@
 import React from "react";
 
-const RecentRecipes = ({ recentRecipes }) => {
+const RecentRecipes = ({ recentRecipes, onRemove }) => {
   return (
     <div className="recent-recipes-container">
       {recentRecipes.map((recipe, index) => (
@@ -19,6 +19,13 @@ const RecentRecipes = ({ recentRecipes }) => {
           >
             View Recipe
           </a>
+          <button
+            onClick={() => onRemove(recipe)}
+            className="remove-recipe-button"
+          >
+            Remove
+          </button>{" "}
+          {/* Remove button */}
         </div>
       ))}
     </div>
