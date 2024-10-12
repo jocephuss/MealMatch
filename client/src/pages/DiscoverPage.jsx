@@ -149,7 +149,7 @@ const DiscoverPage = () => {
       const response = await axios.get("/api/recipes", {
         params: queryParams,
       });
-
+      // potential later on to save 20 hits and call api less.
       if (response.data.length > 0) {
         setRecipes([response.data[0]]); // Only store the first result
       }
@@ -163,7 +163,10 @@ const DiscoverPage = () => {
   // Handle liking a recipe
   const handleLike = (recipe) => {
     setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
+    addLocalStorage(recipe); // Adding recipe to localstorage
+    console.log('here 1')
     fetchRecipes(); // Fetch a new recipe
+    console.log('here 2')
   };
 
   // Handle removing a liked recipe
@@ -171,6 +174,7 @@ const DiscoverPage = () => {
     setRecentRecipes(
       recentRecipes.filter((recipe) => recipe !== recipeToRemove)
     );
+    removeLocalStorage(recipeToRemove); // Remove recipe from localStorage
   };
 
   // Handle disliking or refreshing a recipe
@@ -182,6 +186,47 @@ const DiscoverPage = () => {
   // Apply filters and fetch recipes
   const applyFilters = () => {
     fetchRecipes();
+  };
+
+  // const addLocalStorage = (recipe) => {
+  //   const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes"));
+  //   const updateRecipes = [...storedRecipes, recipe];
+  //   localStorage.setItem("recentRecipes", JSON.stringify(updateRecipes));
+  // };
+  const addLocalStorage = (recipe) => {
+    const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
+    
+    // Extract only the desired fields from the recipe
+    const recipeToStore = {
+      label: recipe.label,
+      image: recipe.image,
+      url: recipe.url,
+    };
+  
+    // Check for duplicates before adding
+    const updatedRecipes = [...storedRecipes, recipeToStore];
+    localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
+  };
+  
+
+  // // Function to remove a liked recipe from localStorage
+  // const removeLocalStorage = (recipeToRemove) => {
+  //   const storedRecipes =
+  //     JSON.parse(localStorage.getItem("recentRecipes")) || [];
+  //   const updatedRecipes = storedRecipes.filter(
+  //     (recipe) => recipe.title !== recipeToRemove.title
+  //   );
+  //   localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
+  // };
+  const removeLocalStorage = (recipeToRemove) => {
+    const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
+    
+    // Filter out the recipe to remove based on the label
+    const updatedRecipes = storedRecipes.filter(
+      (recipe) => recipe.label !== recipeToRemove.label
+    );
+    
+    localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
   };
 
   return (
