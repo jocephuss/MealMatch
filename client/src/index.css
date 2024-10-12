@@ -7,13 +7,13 @@ body {
 }
 
 /* Color Scheme 1: Fresh and Bright */
-/* :root {
+:root {
   --primary-color: #a8d5ba;
   --secondary-color: #f9ebae;
   --accent-color: #ff6f61;
   --background-color: #f4f4f4;
   --text-color: #333;
-} */
+}
 
 /* Color Scheme 2: Ocean Breeze */
 /* :root {
@@ -97,13 +97,13 @@ body {
 } */
 
 /* Color Scheme 11: Elegant and Classy */
-:root {
+/* :root {
   --primary-color: #9b1b30;
   --secondary-color: #f7e7ce;
   --accent-color: #ffd700;
   --background-color: #faf0e6;
   --text-color: #3e2723;
-}
+} */
 
 body {
   background-color: var(--background-color);
@@ -396,34 +396,46 @@ select {
 .Foot {
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  background-color: var(--primary-color);
   padding: 10px 20px;
   text-align: center;
   border-top: 1px solid #ccc;
-  color:#000000; 
-  /* z-index: -5; */
-  /* zindex stopped links from being clickable */
+  color: #000000;
 }
 
 .FootList {
-   list-style: none;
-   display: inline-flex;
-   gap: 5px;
-   flex-wrap: nowrap;
-   align-items: center;
+  list-style: none;
+  display: inline-flex;
+  gap: 5px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.Link {
+  padding: 5px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+.Lefty {
+  padding: 5px;
+  border-left: 1px solid;
+}
+.Righty {
+  padding: 5px;
+  border-right: 1px solid;
 }
 
 .FootList a {
-  color: black; 
-  text-decoration: none; 
-  padding: 0px; 
-  transition: color 3.3s; 
+  color: black;
+  text-decoration: none;
+  padding: 0px;
+  transition: color 3.3s;
   cursor: pointer;
-  
 }
 
 .FootList a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 /* Mobile CSS */
