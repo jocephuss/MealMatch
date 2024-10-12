@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import DiscoverTile from "../components/DiscoverTiles";
 import RecentRecipes from "../components/Recents/RecentRecipes";
-import axios from "axios"; // Ensure axios is imported
+import axios from "axios";
 
 const DiscoverPage = () => {
   // State to store filter values
@@ -123,14 +123,14 @@ const DiscoverPage = () => {
     },
   ];
 
-  // Handle filter changes
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilterValues({
-      ...filterValues,
-      [name]: value !== "N/A" ? value : "",
-    });
-  };
+  // // Handle filter changes
+  // const handleFilterChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFilterValues({
+  //     ...filterValues,
+  //     [name]: value !== "N/A" ? value : "",
+  //   });
+  // };
 
   // Handle ingredient change
   const handleIngredientChange = (e) => {
@@ -164,9 +164,8 @@ const DiscoverPage = () => {
   const handleLike = (recipe) => {
     setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
     addLocalStorage(recipe); // Adding recipe to localstorage
-    console.log("here 1");
+    // window.location.reload();
     fetchRecipes(); // Fetch a new recipe
-    console.log("here 2");
   };
 
   // Handle removing a liked recipe
@@ -188,28 +187,31 @@ const DiscoverPage = () => {
     fetchRecipes();
   };
 
-const addLocalStorage = (recipe) => {
+  const addLocalStorage = (recipe) => {
     // Retrieve existing recipes from localStorage, or initialize as an empty array if null
-    const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
-  console.log("recipe: ", recipe)
+    const storedRecipes =
+      JSON.parse(localStorage.getItem("recentRecipes")) || [];
+
     // Extract only the desired fields from the recipe
     const recipeToStore = {
       label: recipe.recipe.label,
       image: recipe.recipe.images.REGULAR,
       url: recipe.recipe.url,
     };
-    console.log("recipeToStore: ", recipeToStore);
+
     // Check if the recipe already exists in the stored recipes to avoid duplicates
     const recipeExists = storedRecipes.some(
       (storedRecipe) => storedRecipe.label === recipeToStore.label
     );
-  
+
     if (!recipeExists) {
       // Append the new recipe if it doesn't already exist
       const updatedRecipes = [...storedRecipes, recipeToStore];
       localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
     }
-    console.log("Current localStorage:", JSON.parse(localStorage.getItem("recentRecipes")));
+    window.location.reload();
+    
+    fetchRecipes(); // Fetch a new recipe
   };
 
   const removeLocalStorage = (recipeToRemove) => {
@@ -218,7 +220,7 @@ const addLocalStorage = (recipe) => {
 
     // Filter out the recipe to remove based on the label
     const updatedRecipes = storedRecipes.filter(
-      (recipe) => recipe.recipe.label !== recipeToRemove.label
+      (recipe) => recipe.label !== recipeToRemove.label
     );
 
     localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
