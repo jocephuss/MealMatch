@@ -109,6 +109,7 @@ body {
   background-color: var(--background-color);
 }
 
+/* Scrollbar CSS below */
 body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -121,6 +122,20 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
   background: var(--primary-color);
 }
+
+.recent-recipes-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.recent-recipes-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.recent-recipes-container::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+/*  */
 
 #root {
   display: flex;
@@ -261,59 +276,6 @@ button:hover {
   border-radius: 10px;
 }
 
-.favourites-modal {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  z-index: 5;
-  position: relative;
-  background-color: var(--background-color);
-  justify-content: center;
-  align-items: center;
-  border: 2px solid;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.Fav-btn {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.Close-btn {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.Existing {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.New {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.Fav-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.Fav-label,
-input,
-.choose {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
 .apply-filters-button {
   padding: 5px;
   margin: 2px;
@@ -366,7 +328,8 @@ input,
   border-radius: 10px;
 }
 
-.filter-dropdowns {
+/* Un-used atm */
+/* .filter-dropdowns {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -386,8 +349,8 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   cursor: pointer;
-}
-
+} */
+/*  */
 .right-column {
   display: flex;
   flex-direction: column;
@@ -405,7 +368,70 @@ select {
   text-decoration: underline;
 }
 
+/* Favorites modal */
+.favourites-modal {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  position: relative;
+  background-color: var(--background-color);
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 25%);
+}
+
+.Fav-btn {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.Close-btn {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.Existing {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.New {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.Fav-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.Fav-label,
+input,
+.choose {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+/*  */
+
 /* Recipe CSS below */
+.recipe-tile {
+  border: 2px solid;
+  width: 75%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 25%);
+}
 
 .recipe-tile img {
   border-radius: 10px;
@@ -452,19 +478,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-
-.recent-recipes-container::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-.recent-recipes-container::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
-  border-radius: 10px;
-}
-
-.recent-recipes-container::-webkit-scrollbar-track {
-  background: var(--primary-color);
-}
+/*  */
 
 /* Footer */
 .Foot {
