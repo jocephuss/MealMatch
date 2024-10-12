@@ -400,7 +400,30 @@ select {
   padding: 10px 20px;
   text-align: center;
   border-top: 1px solid #ccc;
-  z-index: -5;
+  color:#000000; 
+  /* z-index: -5; */
+  /* zindex stopped links from being clickable */
+}
+
+.FootList {
+   list-style: none;
+   display: inline-flex;
+   gap: 5px;
+   flex-wrap: nowrap;
+   align-items: center;
+}
+
+.FootList a {
+  color: black; 
+  text-decoration: none; 
+  padding: 0px; 
+  transition: color 3.3s; 
+  cursor: pointer;
+  
+}
+
+.FootList a:hover {
+  text-decoration: underline; 
 }
 
 /* Mobile CSS */
