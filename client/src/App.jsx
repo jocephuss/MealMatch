@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./index.css";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 const App = ({ handleLogin }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,7 +22,7 @@ const App = ({ handleLogin }) => {
   return (
     <>
       <header>
-        <h1>MealMatch</h1>
+        <h1>MealMatch! </h1>
 
         {isAuthenticated && (
           <nav>
@@ -44,9 +46,7 @@ const App = ({ handleLogin }) => {
 
       <Outlet />
 
-      <footer className="Foot">
-        <p>MealMatch Footer!</p>
-      </footer>
+     <Footer />
     </>
   );
 };
