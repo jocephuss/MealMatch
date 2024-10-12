@@ -119,12 +119,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-track {
-  background: #333;
+  background: var(--primary-color);
 }
 
 #root {
   display: flex;
   flex-direction: column;
+}
+
+h2 {
+  border-bottom: 1px solid;
+  color: var(--text-color);
 }
 
 /* header/nav below */
@@ -249,7 +254,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  text-decoration: underline;
   width: 85%;
   height: 100%;
   margin: 5px;
@@ -333,7 +337,6 @@ input,
   display: flex;
   flex-direction: row;
   justify-content: center;
-  text-decoration: underline;
   width: 85%;
   height: 100%;
   margin: 5px;
@@ -345,7 +348,6 @@ input,
   display: flex;
   flex-direction: column;
   text-align: center;
-  text-decoration: underline;
   width: 25%;
   height: 100%;
   margin: 5px;
@@ -461,7 +463,7 @@ select {
 }
 
 .recent-recipes-container::-webkit-scrollbar-track {
-  background: #333;
+  background: var(--primary-color);
 }
 
 /* Footer */
