@@ -6,13 +6,17 @@ const FavouritesModal = ({ recipe, closeModal }) => {
   const [selectedCollection, setSelectedCollection] = useState("");
 
   useEffect(() => {
-    const savedCollections = JSON.parse(localStorage.getItem("collections")) || [];
+    const savedCollections =
+      JSON.parse(localStorage.getItem("collections")) || [];
     setCollections(savedCollections);
   }, []);
 
   const handleCreateCollection = () => {
     if (newCollection.trim() !== "") {
-      const updatedCollections = [...collections, { name: newCollection, recipes: [recipe] }];
+      const updatedCollections = [
+        ...collections,
+        { name: newCollection, recipes: [recipe] },
+      ];
       localStorage.setItem("collections", JSON.stringify(updatedCollections));
       setCollections(updatedCollections);
       setNewCollection("");
@@ -36,8 +40,8 @@ const FavouritesModal = ({ recipe, closeModal }) => {
   return (
     <div className="favourites-modal">
       <h2>Add to Favorites</h2>
-      <div>
-        <label>
+      <div className="New">
+        <label className="Fav-label">
           New Collection Name:
           <input
             type="text"
@@ -45,13 +49,16 @@ const FavouritesModal = ({ recipe, closeModal }) => {
             onChange={(e) => setNewCollection(e.target.value)}
           />
         </label>
-        <button onClick={handleCreateCollection}>Create Collection</button>
+        <button className="Fav-btn" onClick={handleCreateCollection}>
+          Create Collection
+        </button>
       </div>
       {collections.length > 0 && (
-        <div>
-          <label>
+        <div className="Existing">
+          <label className="Fav-label">
             Select Existing Collection:
             <select
+              className="choose"
               value={selectedCollection}
               onChange={(e) => setSelectedCollection(e.target.value)}
             >
@@ -63,10 +70,14 @@ const FavouritesModal = ({ recipe, closeModal }) => {
               ))}
             </select>
           </label>
-          <button onClick={handleAddToExistingCollection}>Add to Collection</button>
+          <button className="Fav-btn" onClick={handleAddToExistingCollection}>
+            Add to Collection
+          </button>
         </div>
       )}
-      <button onClick={closeModal}>Close</button>
+      <button className="Close-btn" onClick={closeModal}>
+        Close
+      </button>
     </div>
   );
 };
