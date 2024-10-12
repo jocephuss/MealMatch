@@ -164,9 +164,9 @@ const DiscoverPage = () => {
   const handleLike = (recipe) => {
     setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
     addLocalStorage(recipe); // Adding recipe to localstorage
-    console.log('here 1')
+    console.log("here 1");
     fetchRecipes(); // Fetch a new recipe
-    console.log('here 2')
+    console.log("here 2");
   };
 
   // Handle removing a liked recipe
@@ -188,7 +188,7 @@ const DiscoverPage = () => {
     fetchRecipes();
   };
 
-  const addLocalStorage = (recipe) => {
+const addLocalStorage = (recipe) => {
     // Retrieve existing recipes from localStorage, or initialize as an empty array if null
     const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
   console.log("recipe: ", recipe)
@@ -237,6 +237,19 @@ const DiscoverPage = () => {
         </div>
         <div className="center-column">
           <h2>Discover</h2>
+          <div className="filter-search">
+            <label htmlFor="ingredient"></label>
+            <input
+              id="ingredient"
+              type="text"
+              value={ingredient}
+              onChange={handleIngredientChange}
+              placeholder="e.g., chicken"
+            />
+            <button className="apply-filters-button" onClick={applyFilters}>
+              Apply Filters
+            </button>
+          </div>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -247,7 +260,7 @@ const DiscoverPage = () => {
             />
           )}
         </div>
-        <div className="right-column">
+        {/* <div className="right-column">
           <h2>Filters</h2>
           <div className="filter-dropdowns">
             <div className="filter-search">
@@ -279,8 +292,8 @@ const DiscoverPage = () => {
             <button className="apply-filters-button" onClick={applyFilters}>
               Apply Filters
             </button>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </section>
     </div>
   );

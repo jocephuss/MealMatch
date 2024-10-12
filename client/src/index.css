@@ -257,6 +257,25 @@ button:hover {
   border-radius: 10px;
 }
 
+.apply-filters-button {
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+#ingredient {
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+}
+.filter-search {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .center-column2 {
   display: flex;
   flex-direction: row;
