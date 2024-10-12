@@ -164,9 +164,9 @@ const DiscoverPage = () => {
   const handleLike = (recipe) => {
     setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
     addLocalStorage(recipe); // Adding recipe to localstorage
-    console.log('here 1')
+    console.log("here 1");
     fetchRecipes(); // Fetch a new recipe
-    console.log('here 2')
+    console.log("here 2");
   };
 
   // Handle removing a liked recipe
@@ -194,20 +194,20 @@ const DiscoverPage = () => {
   //   localStorage.setItem("recentRecipes", JSON.stringify(updateRecipes));
   // };
   const addLocalStorage = (recipe) => {
-    const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
-    
+    const storedRecipes =
+      JSON.parse(localStorage.getItem("recentRecipes")) || [];
+
     // Extract only the desired fields from the recipe
     const recipeToStore = {
       label: recipe.label,
       image: recipe.image,
       url: recipe.url,
     };
-  
+
     // Check for duplicates before adding
     const updatedRecipes = [...storedRecipes, recipeToStore];
     localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
   };
-  
 
   // // Function to remove a liked recipe from localStorage
   // const removeLocalStorage = (recipeToRemove) => {
@@ -219,13 +219,14 @@ const DiscoverPage = () => {
   //   localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
   // };
   const removeLocalStorage = (recipeToRemove) => {
-    const storedRecipes = JSON.parse(localStorage.getItem("recentRecipes")) || [];
-    
+    const storedRecipes =
+      JSON.parse(localStorage.getItem("recentRecipes")) || [];
+
     // Filter out the recipe to remove based on the label
     const updatedRecipes = storedRecipes.filter(
       (recipe) => recipe.label !== recipeToRemove.label
     );
-    
+
     localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
   };
 
@@ -242,6 +243,19 @@ const DiscoverPage = () => {
         </div>
         <div className="center-column">
           <h2>Discover</h2>
+          <div className="filter-search">
+            <label htmlFor="ingredient"></label>
+            <input
+              id="ingredient"
+              type="text"
+              value={ingredient}
+              onChange={handleIngredientChange}
+              placeholder="e.g., chicken"
+            />
+            <button className="apply-filters-button" onClick={applyFilters}>
+              Apply Filters
+            </button>
+          </div>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -252,7 +266,7 @@ const DiscoverPage = () => {
             />
           )}
         </div>
-        <div className="right-column">
+        {/* <div className="right-column">
           <h2>Filters</h2>
           <div className="filter-dropdowns">
             <div className="filter-search">
@@ -284,8 +298,8 @@ const DiscoverPage = () => {
             <button className="apply-filters-button" onClick={applyFilters}>
               Apply Filters
             </button>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </section>
     </div>
   );
