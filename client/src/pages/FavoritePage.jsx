@@ -1,68 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+import RecentRecipes from "../components/Recents/RecentRecipes";
 
 const FavoritePage = () => {
-  const [recents, setRecents] = useState([]);
   const [collections, setCollections] = useState([]);
-  const [newCollectionName, setNewCollectionName] = useState("");
+  const [recentRecipes, setRecentRecipes] = useState([]);
 
-  // Fetch recents from localStorage on page load
   useEffect(() => {
-    const storedRecents = JSON.parse(localStorage.getItem("recents")) || [];
-    setRecents(storedRecents);
+    const savedCollections = JSON.parse(localStorage.getItem("collections")) || [];
+    setCollections(savedCollections);
+
+    const savedRecents = JSON.parse(localStorage.getItem("recentRecipes")) || [];
+    setRecentRecipes(savedRecents);
   }, []);
 
-  // Handle collection name change
-  const handleCollectionNameChange = (e) => {
-    setNewCollectionName(e.target.value);
-  };
-
-  // Handle adding a new collection
-  const handleAddCollection = () => {
-    if (newCollectionName.trim() === "") return;
-    setCollections([...collections, newCollectionName]);
-    setNewCollectionName("");
+  const deleteCollection = (index) => {
+    const updatedCollections = collections.filter((_, i) => i !== index);
+    setCollections(updatedCollections);
+    localStorage.setItem("collections", JSON.stringify(updatedCollections));
   };
 
   return (
     <div className="Main">
       <Header />
-      <section className="discover-main">
+      <section className="favorites-main">
         <div className="left-column">
           <h2>Recents</h2>
-          {recents.map((recipe, index) => (
-            <div key={index} className="recent-recipe">
-              <h3>{recipe.label}</h3>
-              <img src={recipe.image} alt={recipe.label} />
-              <a href={recipe.url} target="_blank" rel="noopener noreferrer">
-                View Recipe
-              </a>
-            </div>
-          ))}
+          <RecentRecipes recentRecipes={recentRecipes} /> {/* Keep recents box */}
         </div>
         <div className="center-column">
           <h2>Collections</h2>
-          <div>
-            <input
-              type="text"
-              placeholder="New Collection Name"
-              value={newCollectionName}
-              onChange={handleCollectionNameChange}
-            />
-            <button onClick={handleAddCollection}>Add Collection</button>
-          </div>
-          <div>
-            {collections.length > 0 ? (
-              collections.map((collection, index) => (
-                <div key={index} className="collection-item">
-                  <h3>{collection}</h3>
-                  {/* c'est en cours mes amis :) */}
-                </div>
-              ))
-            ) : (
-              <p>No collections created yet.</p>
-            )}
-          </div>
+          {collections.length > 0 ? (
+            collections.map((collection, index) => (
+              <div key={index}>
+                <h3>{collection.name}</h3>
+                <button
+                  className="delete-collection-button"
+                  onClick={() => deleteCollection(index)}
+                >
+                  Delete Collection
+                </button>
+                <ul>
+                  {collection.recipes.map((recipe, i) => (
+                    <li key={i}>
+                      <h4>{recipe.recipe.label}</h4>
+                      <img src={recipe.recipe.image} alt={recipe.recipe.label} />
+                      <a
+                        href={recipe.recipe.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Recipe
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          ) : (
+            <p>No collections created yet.</p>
+          )}
         </div>
       </section>
     </div>
