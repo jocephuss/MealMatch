@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import FavouritesModal from "../Favourites"; // Updated import
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
+import FavouritesModal from "../Favourites";
 
 const DiscoverTile = ({ recipes, onLike, onDislikeOrRefresh }) => {
   const [showModal, setShowModal] = useState(false);
@@ -27,16 +33,16 @@ const DiscoverTile = ({ recipes, onLike, onDislikeOrRefresh }) => {
             </a>
             <div className="recipe-actions">
               <button type="button" onClick={() => onDislikeOrRefresh()}>
-                Dislike
+                <FontAwesomeIcon icon={faThumbsDown} />
               </button>
               <button type="button" onClick={() => onLike(recipe)}>
-                Like
+                <FontAwesomeIcon icon={faThumbsUp} />
               </button>
-              <button type="button" onClick={() => handleAddToFavorites(recipe)}>
-                Add to Favorites
-              </button>
-              <button type="button" onClick={onDislikeOrRefresh}>
-                Refresh
+              <button
+                type="button"
+                onClick={() => handleAddToFavorites(recipe)}
+              >
+                <FontAwesomeIcon icon={faStar} />
               </button>
             </div>
           </div>

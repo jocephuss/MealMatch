@@ -18,111 +18,6 @@ const DiscoverPage = () => {
   const [recentRecipes, setRecentRecipes] = useState([]); // Store liked recipes
   const [loading, setLoading] = useState(false); // Loading state
 
-  // Define the filters available for selection
-  const filters = [
-    {
-      label: "Diet",
-      options: [
-        "N/A",
-        "balanced",
-        "high-fiber",
-        "high-protein",
-        "low-carb",
-        "low-fat",
-        "low-sodium",
-      ],
-    },
-    {
-      label: "Health",
-      options: [
-        "N/A",
-        "alcohol-free",
-        "celery-free",
-        "dairy-free",
-        "gluten-free",
-        "crustacean-free",
-        "DASH",
-        "egg-free",
-        "fish-free",
-        "fodmap-free",
-        "immuno-supportive",
-        "keto-friendly",
-        "kidney-friendly",
-        "kosher",
-        "low-Potassium",
-        "low-sugar",
-        "lupine-free",
-        "mollusk-free",
-        "mustard free",
-        "no-oil-added",
-        "paleo",
-        "peanut-free",
-        "pescatarian",
-        "pork-free",
-        "red-meat-free",
-        "sesame-free",
-        "shellfish-free",
-        "soy-free",
-        "sugar-conscious",
-        "tree-nut-free",
-        "vegan",
-        "vegetarian",
-        "wheat-free",
-      ],
-    },
-    {
-      label: "Cuisines",
-      options: [
-        "N/A",
-        "American",
-        "Asian",
-        "British",
-        "Caribbean",
-        "Central Europe",
-        "Chinese",
-        "Eastern Europe",
-        "French",
-        "Indian",
-        "Italian",
-        "Japanese",
-        "Kosher",
-        "Mediterranean",
-        "Mexican",
-        "Middle eastern",
-        "Nordic",
-        "South American",
-        "South east Asian",
-        "World",
-      ],
-    },
-    {
-      label: "Meal",
-      options: ["N/A", "breakfast", "lunch", "dinner", "snack", "teatime"],
-    },
-    {
-      label: "Dishes",
-      options: [
-        "N/A",
-        "Biscuits and cookies",
-        "Bread",
-        "Cereals",
-        "Condiments and sauces",
-        "Desserts",
-        "Drinks",
-        "Main course",
-        "Pancake",
-        "Preps",
-        "Perserve",
-        "Salad",
-        "Sandwiches",
-        "Side Dish",
-        "Soup",
-        "Starter",
-        "Sweets",
-      ],
-    },
-  ];
-
   // // Handle filter changes
   // const handleFilterChange = (e) => {
   //   const { name, value } = e.target;
@@ -210,7 +105,7 @@ const DiscoverPage = () => {
       localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
     }
     // window.location.reload();
-    
+
     fetchRecipes(); // Fetch a new recipe
   };
 
@@ -249,7 +144,7 @@ const DiscoverPage = () => {
               placeholder="e.g., chicken"
             />
             <button className="apply-filters-button" onClick={applyFilters}>
-              Apply Filters
+              Search Keyword
             </button>
           </div>
           {loading ? (
@@ -262,40 +157,6 @@ const DiscoverPage = () => {
             />
           )}
         </div>
-        {/* <div className="right-column">
-          <h2>Filters</h2>
-          <div className="filter-dropdowns">
-            <div className="filter-search">
-              <label htmlFor="ingredient"></label>
-              <input
-                id="ingredient"
-                type="text"
-                value={ingredient}
-                onChange={handleIngredientChange}
-                placeholder="e.g., chicken"
-              />
-            </div>
-            {filters.map((filter, index) => (
-              <div key={index} className="filter-dropdown">
-                <label htmlFor={filter.label}>{filter.label}</label>
-                <select
-                  id={filter.label}
-                  name={filter.label.toLowerCase()}
-                  onChange={handleFilterChange}
-                >
-                  {filter.options.map((option, optionIndex) => (
-                    <option key={optionIndex} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
-            <button className="apply-filters-button" onClick={applyFilters}>
-              Apply Filters
-            </button>
-          </div> */}
-        {/* </div> */}
       </section>
     </div>
   );

@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faStar, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
@@ -9,7 +11,7 @@ const Navigation = () => {
           isActive ? "nav-link tabs active" : "nav-link tabs"
         }
       >
-        Favorite
+        <FontAwesomeIcon icon={faStar} />
       </NavLink>
       <NavLink
         to="/home"
@@ -17,18 +19,18 @@ const Navigation = () => {
           isActive ? "nav-link tabs active" : "nav-link tabs"
         }
       >
-        Home
+        <FontAwesomeIcon icon={faHome} />
       </NavLink>
-
       <NavLink
         to="/"
         className={({ isActive }) =>
           isActive ? "nav-link tabs active" : "nav-link tabs"
         }
       >
-        Log out
+        <FontAwesomeIcon icon={faUserSlash} />
       </NavLink>
     </ul>
   );
 };
+
 export default Navigation;
