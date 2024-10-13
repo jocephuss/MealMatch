@@ -23,27 +23,27 @@ const FavoritePage = () => {
   return (
     <div className="Main">
       <Header />
-      <section className="favorites-main">
+      <section className="favorite-main">
         <div className="left-column">
           <h2>Recents</h2>
           <RecentRecipes recentRecipes={recentRecipes} /> {/* Keep recents box */}
         </div>
-        <div className="center-column">
+        <div className="center-column collection-recipes-container ">
           <h2>Collections</h2>
           {collections.length > 0 ? (
             collections.map((collection, index) => (
               <div key={index}>
-                <h3>{collection.name}</h3>
+                <h3 >{collection.name}</h3>
                 <button
                   className="delete-collection-button"
                   onClick={() => deleteCollection(index)}
                 >
                   Delete Collection
                 </button>
-                <ul>
+                <ul className="collections-list">
                   {collection.recipes.map((recipe, i) => (
-                    <li key={i}>
-                      <h4>{recipe.recipe.label}</h4>
+                    <li className="collection-recipe" key={i}>
+                      <h4 >{recipe.recipe.label}</h4>
                       <img src={recipe.recipe.image} alt={recipe.recipe.label} />
                       <a
                         href={recipe.recipe.url}
