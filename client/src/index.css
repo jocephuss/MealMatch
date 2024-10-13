@@ -483,6 +483,7 @@ input,
   gap: 5px;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
 }
 
 .Link {
@@ -526,7 +527,6 @@ input,
 
   .apply-filters-button {
     padding: 5px;
-    width: 100%;
     border-radius: 10px;
   }
 
@@ -535,11 +535,10 @@ input,
   }
 
   .left-column {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     overflow-x: auto;
-    height: 100px;
+    height: 600px;
     width: 90%;
   }
 
@@ -550,11 +549,11 @@ input,
     padding: 5px;
     border: none;
     border-radius: 0;
-    height: 100px;
+    height: 500px;
   }
 
   .recent-recipe {
-    flex-direction: row;
+    flex-direction: column;
     margin: 5px;
     width: 80%;
   }
@@ -569,6 +568,10 @@ input,
     height: 200px;
     border-radius: 10px;
     margin: 5px;
+  }
+
+  .recipe-tile {
+    margin-bottom: 10px;
   }
 
   .filter-dropdown {
@@ -597,5 +600,24 @@ input,
 
   select {
     width: auto;
+  }
+
+  .FootList {
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 10px 10px;
+    text-align: center;
+    border-top: none;
+    color: #000000;
+  }
+
+  .Link {
+    text-decoration: underline;
+  }
+
+  .Link,
+  .Lefty,
+  .Righty {
+    border: none;
   }
 }

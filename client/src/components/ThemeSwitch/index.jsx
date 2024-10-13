@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const themes = [
   {
@@ -117,14 +117,29 @@ const ThemeSwitcher = () => {
   // Component to switch between different themes
   const [currentTheme, setCurrentTheme] = useState(0);
 
-  const handleThemeChange = () => {
-    // Switch to the next theme
-    setCurrentTheme((prevTheme) => (prevTheme + 1) % themes.length);
-    const theme = themes[(currentTheme + 1) % themes.length];
+  useEffect(() => {
+    // Check local storage for saved theme index
+    const savedTheme = localStorage.getItem("themeIndex");
+    if (savedTheme) {
+      setCurrentTheme(Number(savedTheme));
+      applyTheme(Number(savedTheme)); // Apply saved theme styles
+    }
+  }, []);
+
+  const applyTheme = (themeIndex) => {
+    const theme = themes[themeIndex];
     Object.entries(theme.styles).forEach(([key, value]) => {
       // Apply the new theme styles to the document root element
       document.documentElement.style.setProperty(key, value);
     });
+  };
+
+  const handleThemeChange = () => {
+    // Switch to the next theme
+    const newThemeIndex = (currentTheme + 1) % themes.length;
+    setCurrentTheme(newThemeIndex);
+    localStorage.setItem("themeIndex", newThemeIndex); // Save the current theme index
+    applyTheme(newThemeIndex); // Apply new theme styles
   };
 
   return (
