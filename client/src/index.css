@@ -189,6 +189,67 @@ button:hover {
   margin: 5px;
 }
 
+.favorite-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 5px;
+  width: 100%;
+  padding: 10px;
+}
+
+
+.collection-recipes-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.collection-recipes-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.collection-recipes-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.collection-recipes-container::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.collections-list {
+  list-style-type: none;
+}
+
+.collection-recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.collection-recipe img {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.collection-recipe h3 {
+  font-size: 1rem;
+}
+
 .center-column {
   display: flex;
   flex-direction: column;
