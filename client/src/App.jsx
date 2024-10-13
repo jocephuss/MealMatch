@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./index.css";
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ThemeSwitcher from "./components/ThemeSwitch";
 
 const App = ({ handleLogin }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,6 +24,7 @@ const App = ({ handleLogin }) => {
     <>
       <header>
         <h1>MealMatch! </h1>
+        <ThemeSwitcher />
 
         {isAuthenticated && (
           <nav>
@@ -46,7 +48,7 @@ const App = ({ handleLogin }) => {
 
       <Outlet />
 
-     <Footer />
+      <Footer />
     </>
   );
 };

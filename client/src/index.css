@@ -15,109 +15,11 @@ body {
   --text-color: #333;
 }
 
-/* Color Scheme 2: Ocean Breeze */
-/* :root {
-  --primary-color: #0096c7;
-  --secondary-color: #90e0ef;
-  --accent-color: #00b4d8;
-  --background-color: #f0f9ff;
-  --text-color: #03045e;
-} */
-
-/* Color Scheme 3: Sunset */
-/* :root {
-  --primary-color: #ff6f61;
-  --secondary-color: #ffccbc;
-  --accent-color: #d32f2f;
-  --background-color: #ffe0b2;
-  --text-color: #4e342e;
-} */
-
-/* Color Scheme 4: Ocean */
-/* :root {
-  --primary-color: #0077be;
-  --secondary-color: #00bcd4;
-  --accent-color: #009688;
-  --background-color: #e0f7fa;
-  --text-color: #004d40;
-} */
-
-/* Color Scheme 5: Forest */
-/* :root {
-  --primary-color: #3b7a57;
-  --secondary-color: #6fb98f;
-  --accent-color: #2b5d38;
-  --background-color: #e8f5e9;
-  --text-color: #3e3e3e;
-} */
-
-/* Color Scheme 6: warm sunset */
-/* :root {
-  --primary-color: #ff6f20;
-  --secondary-color: #ffb74d;
-  --accent-color: #d84315;
-  --background-color: #fff3e0;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 7: Earthy */
-/* :root {
-  --primary-color: #556b2f;
-  --secondary-color: #d2b48c;
-  --accent-color: #e27d60;
-  --background-color: #faf3e0;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 8: Modern and Minimal*/
-/* :root {
-  --primary-color: #4a4a4a;
-  --secondary-color: #ffffff;
-  --accent-color: #1abc9c;
-  --background-color: #f0f0f0;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 9:  Warm and Cozy */
-/* :root {
-  --primary-color: #ede6d4;
-  --secondary-color: #bf4d4d;
-  --accent-color: #f6b93b;
-  --background-color: #fff8e1;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 10: Bright and Cheerful */
-/* :root {
-  --primary-color: #87ceeb;
-  --secondary-color: #ffd700;
-  --accent-color: #ff3e30;
-  --background-color: #f5f5f5;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 11: Elegant and Classy */
-/* :root {
-  --primary-color: #9b1b30;
-  --secondary-color: #f7e7ce;
-  --accent-color: #ffd700;
-  --background-color: #faf0e6;
-  --text-color: #3e2723;
-} */
-
-/* Color Scheme 12: Black and gold for Sergio */
-/* :root {
-  --primary-color: #ffdd03;
-  --secondary-color: #f7e7ce;
-  --accent-color: #fbc403;
-  --background-color: #fbfcd4;
-  --text-color: #151515;
-} */
-
 body {
   background-color: var(--background-color);
 }
 
+/* Scrollbar CSS below */
 body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -128,12 +30,31 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-track {
-  background: #333;
+  background: var(--primary-color);
 }
+
+.recent-recipes-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.recent-recipes-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.recent-recipes-container::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+/*  */
 
 #root {
   display: flex;
   flex-direction: column;
+}
+
+h2 {
+  border-bottom: 1px solid;
+  color: var(--text-color);
 }
 
 /* header/nav below */
@@ -144,6 +65,20 @@ header {
   border-bottom: 1px solid #ccc;
 }
 
+.ThemeSwitcher {
+  border-radius: 10px;
+  padding: 5px;
+  border: 2px solid var(--accent-color);
+  width: fit-content;
+  margin: auto;
+  background-color: var(--background-color);
+}
+
+.ThemeSwitcher:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.08);
+}
+
 .Navs {
   padding: 10px;
   display: flex;
@@ -152,12 +87,12 @@ header {
 }
 
 .Navs a {
-  color: #ffffff;
+  color: var(--text-color);
   text-decoration: none;
-  border: solid 1px var(--accent-color);
-  padding: 2px;
-  border-radius: 5px;
-  background-color: #333;
+  border: solid 2px var(--accent-color);
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--primary-color);
 }
 
 .Navs a:hover {
@@ -319,7 +254,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  text-decoration: underline;
   width: 85%;
   height: 100%;
   margin: 5px;
@@ -327,6 +261,100 @@ button:hover {
   border-radius: 10px;
 }
 
+.apply-filters-button {
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+#ingredient {
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+}
+.filter-search {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.center-column2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 85%;
+  height: 100%;
+  margin: 5px;
+  border: solid 2px var(--text-color);
+  border-radius: 10px;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25%;
+  height: 100%;
+  margin: 5px;
+  border: solid 2px var(--text-color);
+  border-radius: 10px;
+}
+
+.left-column2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-decoration: underline;
+  width: 20%;
+  height: 100%;
+  border: solid 2px var(--text-color);
+  border-radius: 10px;
+}
+
+/* Un-used atm */
+/* .filter-dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-dropdown label {
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+} */
+/*  */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 25%;
+  height: auto;
+  padding: 5px;
+  margin-bottom: auto;
+  border: solid 2px var(--text-color);
+  border-radius: 10px;
+}
+
+.right-column h2 {
+  text-decoration: underline;
+}
+
+/* Favorites modal */
 .favourites-modal {
   width: 50%;
   margin-left: auto;
@@ -341,6 +369,7 @@ button:hover {
   border: 2px solid;
   border-radius: 10px;
   padding: 5px;
+  box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 25%);
 }
 
 .Fav-btn {
@@ -379,101 +408,16 @@ input,
   margin: 5px;
   border-radius: 10px;
 }
-
-.apply-filters-button {
-  padding: 5px;
-  margin: 2px;
-  border-radius: 10px;
-}
-
-#ingredient {
-  padding: 5px;
-  margin: 2px;
-  border-radius: 10px;
-}
-.filter-search {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.center-column2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-decoration: underline;
-  width: 85%;
-  height: 100%;
-  margin: 5px;
-  border: solid 2px var(--text-color);
-  border-radius: 10px;
-}
-
-.left-column {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  text-decoration: underline;
-  width: 25%;
-  height: 100%;
-  margin: 5px;
-  border: solid 2px var(--text-color);
-  border-radius: 10px;
-}
-
-.left-column2 {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  text-decoration: underline;
-  width: 20%;
-  height: 100%;
-  border: solid 2px var(--text-color);
-  border-radius: 10px;
-}
-
-.filter-dropdowns {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.filter-dropdown {
-  display: flex;
-  flex-direction: column;
-}
-
-.filter-dropdown label {
-  margin-bottom: 5px;
-}
-
-select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.right-column {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  width: 25%;
-  height: auto;
-  padding: 5px;
-  margin-bottom: auto;
-  border: solid 2px var(--text-color);
-  border-radius: 10px;
-}
-
-.right-column h2 {
-  text-decoration: underline;
-}
+/*  */
 
 /* Recipe CSS below */
+.recipe-tile {
+  border: 2px solid;
+  width: 75%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 5px rgb(0 0 0 / 25%);
+}
 
 .recipe-tile img {
   border-radius: 10px;
@@ -520,19 +464,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-
-.recent-recipes-container::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-.recent-recipes-container::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
-  border-radius: 10px;
-}
-
-.recent-recipes-container::-webkit-scrollbar-track {
-  background: #333;
-}
+/*  */
 
 /* Footer */
 .Foot {
