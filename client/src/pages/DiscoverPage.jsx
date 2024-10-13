@@ -209,7 +209,7 @@ const DiscoverPage = () => {
       const updatedRecipes = [...storedRecipes, recipeToStore];
       localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
     }
-    window.location.reload();
+    // window.location.reload();
     
     fetchRecipes(); // Fetch a new recipe
   };
