@@ -15,7 +15,7 @@ const FavouritesModal = ({ recipe, closeModal }) => {
     if (newCollection.trim() !== "") {
       const updatedCollections = [
         ...collections,
-        { name: newCollection, recipes: [recipe] },
+        { name: newCollection, recipes: [recipe] }, // Append the selected recipe
       ];
       localStorage.setItem("collections", JSON.stringify(updatedCollections));
       setCollections(updatedCollections);
@@ -28,7 +28,7 @@ const FavouritesModal = ({ recipe, closeModal }) => {
     if (selectedCollection) {
       const updatedCollections = collections.map((col) =>
         col.name === selectedCollection
-          ? { ...col, recipes: [...col.recipes, recipe] }
+          ? { ...col, recipes: [...col.recipes, recipe] } // Append the selected recipe
           : col
       );
       localStorage.setItem("collections", JSON.stringify(updatedCollections));
@@ -38,47 +38,50 @@ const FavouritesModal = ({ recipe, closeModal }) => {
   };
 
   return (
-    <div className="favourites-modal">
-      <h2>Add to Favorites</h2>
-      <div className="New">
-        <label className="Fav-label">
-          New Collection Name:
-          <input
-            type="text"
-            value={newCollection}
-            onChange={(e) => setNewCollection(e.target.value)}
-          />
-        </label>
-        <button className="Fav-btn" onClick={handleCreateCollection}>
-          Create Collection
-        </button>
-      </div>
-      {collections.length > 0 && (
-        <div className="Existing">
+    <>
+      <div className="modal-overlay" onClick={closeModal} /> {/* Overlay */}
+      <div className="favourites-modal">
+        <h2>Add to Favorites</h2>
+        <div className="New">
           <label className="Fav-label">
-            Select Existing Collection:
-            <select
-              className="choose"
-              value={selectedCollection}
-              onChange={(e) => setSelectedCollection(e.target.value)}
-            >
-              <option value="">Choose...</option>
-              {collections.map((col, index) => (
-                <option key={index} value={col.name}>
-                  {col.name}
-                </option>
-              ))}
-            </select>
+            New Collection Name:
+            <input
+              type="text"
+              value={newCollection}
+              onChange={(e) => setNewCollection(e.target.value)}
+            />
           </label>
-          <button className="Fav-btn" onClick={handleAddToExistingCollection}>
-            Add to Collection
+          <button className="Fav-btn" onClick={handleCreateCollection}>
+            Create Collection
           </button>
         </div>
-      )}
-      <button className="Close-btn" onClick={closeModal}>
-        Close
-      </button>
-    </div>
+        {collections.length > 0 && (
+          <div className="Existing">
+            <label className="Fav-label">
+              Select Existing Collection:
+              <select
+                className="choose"
+                value={selectedCollection}
+                onChange={(e) => setSelectedCollection(e.target.value)}
+              >
+                <option value="">Choose...</option>
+                {collections.map((col, index) => (
+                  <option key={index} value={col.name}>
+                    {col.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button className="Fav-btn" onClick={handleAddToExistingCollection}>
+              Add to Collection
+            </button>
+          </div>
+        )}
+        <button className="Close-btn" onClick={closeModal}>
+          Close
+        </button>
+      </div>
+    </>
   );
 };
 

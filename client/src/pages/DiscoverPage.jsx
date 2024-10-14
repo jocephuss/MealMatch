@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import DiscoverTile from "../components/DiscoverTiles";
 import RecentRecipes from "../components/Recents/RecentRecipes";
@@ -18,14 +18,12 @@ const DiscoverPage = () => {
   const [recentRecipes, setRecentRecipes] = useState([]); // Store liked recipes
   const [loading, setLoading] = useState(false); // Loading state
 
-  // // Handle filter changes
-  // const handleFilterChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFilterValues({
-  //     ...filterValues,
-  //     [name]: value !== "N/A" ? value : "",
-  //   });
-  // };
+  // Fetch recent recipes from localStorage when component mounts
+  useEffect(() => {
+    const storedRecipes =
+      JSON.parse(localStorage.getItem("recentRecipes")) || [];
+    setRecentRecipes(storedRecipes);
+  }, []);
 
   // Handle ingredient change
   const handleIngredientChange = (e) => {
@@ -44,7 +42,7 @@ const DiscoverPage = () => {
       const response = await axios.get("/api/recipes", {
         params: queryParams,
       });
-      // potential later on to save 20 hits and call api less.
+
       if (response.data.length > 0) {
         setRecipes([response.data[0]]); // Only store the first result
       }
@@ -57,16 +55,34 @@ const DiscoverPage = () => {
 
   // Handle liking a recipe
   const handleLike = (recipe) => {
-    setRecentRecipes([...recentRecipes, recipe]); // Add the liked recipe to recents
-    addLocalStorage(recipe); // Adding recipe to localstorage
-    // window.location.reload();
+    const recipeToStore = {
+      label: recipe.recipe.label,
+      image: recipe.recipe.image,
+      url: recipe.recipe.url,
+    };
+
+    // Update state for recent recipes
+    setRecentRecipes((prevRecipes) => {
+      const recipeExists = prevRecipes.some(
+        (storedRecipe) => storedRecipe.label === recipeToStore.label
+      );
+
+      if (!recipeExists) {
+        const updatedRecipes = [...prevRecipes, recipeToStore];
+        localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
+        return updatedRecipes; // Return updated state
+      }
+
+      return prevRecipes; // Return the previous state if the recipe already exists
+    });
+
     fetchRecipes(); // Fetch a new recipe
   };
 
   // Handle removing a liked recipe
   const handleRemove = (recipeToRemove) => {
-    setRecentRecipes(
-      recentRecipes.filter((recipe) => recipe !== recipeToRemove)
+    setRecentRecipes((prevRecipes) =>
+      prevRecipes.filter((recipe) => recipe.label !== recipeToRemove.label)
     );
     removeLocalStorage(recipeToRemove); // Remove recipe from localStorage
   };
@@ -82,38 +98,10 @@ const DiscoverPage = () => {
     fetchRecipes();
   };
 
-  const addLocalStorage = (recipe) => {
-    // Retrieve existing recipes from localStorage, or initialize as an empty array if null
-    const storedRecipes =
-      JSON.parse(localStorage.getItem("recentRecipes")) || [];
-
-    // Extract only the desired fields from the recipe
-    const recipeToStore = {
-      label: recipe.recipe.label,
-      image: recipe.recipe.images.REGULAR,
-      url: recipe.recipe.url,
-    };
-
-    // Check if the recipe already exists in the stored recipes to avoid duplicates
-    const recipeExists = storedRecipes.some(
-      (storedRecipe) => storedRecipe.label === recipeToStore.label
-    );
-
-    if (!recipeExists) {
-      // Append the new recipe if it doesn't already exist
-      const updatedRecipes = [...storedRecipes, recipeToStore];
-      localStorage.setItem("recentRecipes", JSON.stringify(updatedRecipes));
-    }
-    // window.location.reload();
-
-    fetchRecipes(); // Fetch a new recipe
-  };
-
   const removeLocalStorage = (recipeToRemove) => {
     const storedRecipes =
       JSON.parse(localStorage.getItem("recentRecipes")) || [];
 
-    // Filter out the recipe to remove based on the label
     const updatedRecipes = storedRecipes.filter(
       (recipe) => recipe.label !== recipeToRemove.label
     );
@@ -131,6 +119,7 @@ const DiscoverPage = () => {
             recentRecipes={recentRecipes}
             onRemove={handleRemove}
           />{" "}
+          {/* Pass handleRemove */}
         </div>
         <div className="center-column">
           <h2>Discover</h2>
