@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import RecentRecipes from "../components/Recents/RecentRecipes";
+import FavouritesModal from "../components/Favourites"; // Import FavouritesModal
 
 const FavoritePage = () => {
   const [collections, setCollections] = useState([]);
   const [recentRecipes, setRecentRecipes] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null); // State for the selected recipe
 
   useEffect(() => {
-    const savedCollections = JSON.parse(localStorage.getItem("collections")) || [];
+    const savedCollections =
+      JSON.parse(localStorage.getItem("collections")) || [];
     setCollections(savedCollections);
 
-    const savedRecents = JSON.parse(localStorage.getItem("recentRecipes")) || [];
+    const savedRecents =
+      JSON.parse(localStorage.getItem("recentRecipes")) || [];
     setRecentRecipes(savedRecents);
   }, []);
 
@@ -20,20 +25,45 @@ const FavoritePage = () => {
     localStorage.setItem("collections", JSON.stringify(updatedCollections));
   };
 
+  const handleRemove = (recipeToRemove) => {
+    const updatedRecentRecipes = recentRecipes.filter(
+      (recipe) => recipe.label !== recipeToRemove.label
+    );
+    setRecentRecipes(updatedRecentRecipes);
+    localStorage.setItem("recentRecipes", JSON.stringify(updatedRecentRecipes));
+  };
+
+  const openModal = (recipe) => {
+    setSelectedRecipe(recipe);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedRecipe(null);
+  };
+
   return (
     <div className="Main">
       <Header />
       <section className="favorite-main">
         <div className="left-column">
           <h2>Recents</h2>
-          <RecentRecipes recentRecipes={recentRecipes} /> {/* Keep recents box */}
+          <RecentRecipes
+            recentRecipes={recentRecipes}
+            onRemove={handleRemove}
+            onFavorite={openModal} // Pass openModal to RecentRecipes
+          />
+          {showModal && selectedRecipe && (
+            <FavouritesModal recipe={selectedRecipe} closeModal={closeModal} />
+          )}
         </div>
         <div className="center-column collection-recipes-container ">
           <h2>Collections</h2>
           {collections.length > 0 ? (
             collections.map((collection, index) => (
               <div key={index}>
-                <h3 >{collection.name}</h3>
+                <h3>{collection.name}</h3>
                 <button
                   className="delete-collection-button"
                   onClick={() => deleteCollection(index)}
@@ -43,15 +73,24 @@ const FavoritePage = () => {
                 <ul className="collections-list">
                   {collection.recipes.map((recipe, i) => (
                     <li className="collection-recipe" key={i}>
-                      <h4 >{recipe.recipe.label}</h4>
-                      <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-                      <a
-                        href={recipe.recipe.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Recipe
-                      </a>
+                      {recipe && recipe.recipe ? ( // Ensure recipe is defined
+                        <>
+                          <h4>{recipe.recipe.label}</h4>
+                          <img
+                            src={recipe.recipe.image}
+                            alt={recipe.recipe.label}
+                          />
+                          <a
+                            href={recipe.recipe.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View Recipe
+                          </a>
+                        </>
+                      ) : (
+                        <p>Recipe data is not available.</p>
+                      )}
                     </li>
                   ))}
                 </ul>
