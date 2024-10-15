@@ -1,6 +1,8 @@
 // profile will be user's info
 // 
-const typeDefs = `
+const { gql } = require("apollo-server-express");
+
+const typeDefs = gql`
 type Profile {
     _id: ID
     username: String
