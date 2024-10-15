@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./index.css";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ThemeSwitcher from "./components/ThemeSwitch";
 

@@ -12,13 +12,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 // API endpoint for fetching recipes
 app.get("/api/recipes", async (req, res) => {
   try {
-    const { diet, health, cuisineType, mealType, dishType, q } = req.query;
+    const { q } = req.query;
     const recipes = await FoodSearch(
-      diet,
-      health,
-      cuisineType,
-      mealType,
-      dishType,
       q
     );
     res.json(recipes);

@@ -26,8 +26,5 @@ type Profile {
 
 `
 
-// might need to have a way to add favorites here, to be continued
-
-
 module.exports = typeDefs;
 

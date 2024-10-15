@@ -5,7 +5,7 @@ const secret = 'flockchen';
 const expiration = '2h';
 
 module.exports = {
-  AuthenticationError: new GraphQLError('Could not authenticate user.', {
+  AuthenticationError: new GraphQLError('Could not authenticate profile.', {
     extensions: {
       code: 'UNAUTHENTICATED',
     },
@@ -23,7 +23,7 @@ module.exports = {
 
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      req.profile = data;
     } catch {
       console.log('Invalid token');
     }
