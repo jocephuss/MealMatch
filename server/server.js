@@ -12,7 +12,9 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 // API endpoint for fetching recipes
 app.get("/api/recipes", async (req, res) => {
   try {
+
     const { q } = req.query;
+
     const recipes = await FoodSearch(
       q
     );
