@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors"); // Import cors
+const cors = require("cors");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
@@ -19,7 +19,11 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
-  app.use(cors()); // Enable CORS for all requests
+  app.use(
+    cors({
+      origin: "https://mealmatch.onrender.com/",
+    })
+  );
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
