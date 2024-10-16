@@ -39,9 +39,13 @@ const DiscoverPage = () => {
         q: ingredient || undefined, // Add ingredient to the query
       };
 
-      const response = await axios.get("/api/recipes", {
-        params: queryParams,
-      });
+      const response = await axios.get(
+        "https://mealmatch.onrender.com/api/recipes",
+        {
+          // Updated URL
+          params: queryParams,
+        }
+      );
 
       if (response.data.length > 0) {
         setRecipes([response.data[0]]); // Only store the first result
@@ -118,8 +122,7 @@ const DiscoverPage = () => {
           <RecentRecipes
             recentRecipes={recentRecipes}
             onRemove={handleRemove}
-          />{" "}
-          {/* Pass handleRemove */}
+          />
         </div>
         <div className="center-column">
           <h2>Discover</h2>
