@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
-import client from "./apolloClient";
+import { ApolloProvider } from "@apollo/client"; // Import ApolloProvider
+import client from "./apolloClient"; // Import the Apollo client
 
 import App from "./App.jsx";
 import DiscoverPage from "./pages/DiscoverPage";
@@ -17,6 +17,7 @@ const handleLogin = () => {
   console.log("User logged in");
 };
 
+// Define the router
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
   },
 ]);
 
+// Render the application with ApolloProvider
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ApolloProvider client={client}>
     <RouterProvider router={router} />
