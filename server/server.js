@@ -19,11 +19,16 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
+  // Enable CORS for your frontend URL
   app.use(
     cors({
-      origin: "https://mealmatch.onrender.com/",
+      origin: "https://mealmatch.onrender.com", // Ensure no trailing slash
+      credentials: true, // Enable sending cookies with requests
+      methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
+      allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
     })
   );
+
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
