@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="Foot">
       <ul className="FootList">
         <li>
-          <img src="../../public/smlplate.png" alt="" />
+          <img src="../smlplate.png" alt="plate" />
         </li>
         <li className="Righty">A</li>
         <li className="Link">
@@ -35,7 +35,7 @@ const Footer = () => {
         </li>
         <li className="Lefty"> Production </li>
         <li>
-          <img src="../../public/smlplate.png" alt="" />
+          <img src="../smlplate.png" alt="plate" />
         </li>
       </ul>
     </footer>
