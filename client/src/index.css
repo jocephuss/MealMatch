@@ -196,7 +196,6 @@ button:hover {
   justify-content: center;
   height: 100vh;
   margin: 5px;
-  width: 100%;
   padding: 10px;
 }
 
@@ -525,6 +524,9 @@ input,
 
 /* Mobile CSS */
 @media (max-width: 768px) {
+  .favorite-main {
+    flex-direction: column-reverse;
+  }
   .discover-main {
     flex-direction: column-reverse;
     justify-content: center;
