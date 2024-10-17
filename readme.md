@@ -10,7 +10,6 @@ Are you tired of scrolling through endless food apps without finding the dish th
 - [Credits](#credits)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
-- [Questions](#questions)
 
 ## Installation
 No instalalation needed, vistit the deployed URL
@@ -22,7 +21,7 @@ No instalalation needed, vistit the deployed URL
 Swipe around to find meal ideas, view a favorites list, and get more details on your favorite meal.
 
 ## URL
-Later!!!!!!!!
+- [MealMatch](https://mealmatch.onrender.com/)
 
 ## Credits
 - [Sergio Martinez](https://github.com/SergMart7) 
@@ -44,6 +43,3 @@ This project is licensed under the MIT
 - Commit your changes and ensure that the commit message is clear and descriptive:
 - Push to your branch.
 - Create a Pull Request from your branch into the main repository's main branch. Make sure to provide a detailed explanation of the changes you've made.
-
-## Questions
-My github profile is: https://github.com/jocephuss/MealMatch
