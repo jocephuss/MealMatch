@@ -17,7 +17,7 @@ No instalalation needed, vistit the deployed URL
 
 ## Usage
 
-<img src="Later!!!!!!!!!!!!" alt="screenshot" width="400"/>
+<img src="./client/src/assets/Screenshot.jpg" alt="screenshot" width="400"/>
 
 Swipe around to find meal ideas, view a favorites list, and get more details on your favorite meal.
 
@@ -25,14 +25,14 @@ Swipe around to find meal ideas, view a favorites list, and get more details on 
 Later!!!!!!!!
 
 ## Credits
-- Sergio Martinez 
-- Josiah Rowland 
-- Bryan Taboada
+- [Sergio Martinez](https://github.com/SergMart7) 
+- [Josiah Rowland](https://github.com/jocephuss) 
+- [Bryan Taboada](https://github.com/Taboada-B)
 
 
 ## License
 
-<img src="./img/MIT-logo.jpg" alt="logo" width="50"/>
+<img src="./client/src/assets/MIT-logo.jpg" alt="logo" width="50"/>
 
 This project is licensed under the MIT 
 - see the following link for details: [MIT License](https://opensource.org/licenses/MIT)
