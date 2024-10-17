@@ -53,16 +53,19 @@ body::-webkit-scrollbar-track {
 }
 
 h2 {
-  border-bottom: 1px solid;
+  border-bottom: 2px solid var(--accent-color);
   color: var(--text-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* header/nav below */
+/* Header/Navigation */
 header {
   background-color: var(--primary-color);
-  padding: 10px 20px;
+  padding: 15px 20px;
   text-align: center;
   border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ThemeSwitcher {
@@ -72,6 +75,7 @@ header {
   width: fit-content;
   margin: auto;
   background-color: var(--background-color);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .ThemeSwitcher:hover {
@@ -82,7 +86,7 @@ header {
 .Navs {
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -90,43 +94,19 @@ header {
   color: var(--text-color);
   text-decoration: none;
   border: solid 2px var(--accent-color);
-  padding: 5px;
+  padding: 8px 12px;
   border-radius: 10px;
   background-color: var(--primary-color);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .Navs a:hover {
   background-color: var(--accent-color);
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
-/* login/signup below */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: var(--background-color);
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form input {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
+/* Login/Signup below */
+.login-container,
 .signup-container {
   display: flex;
   flex-direction: column;
@@ -136,6 +116,7 @@ header {
   background-color: var(--background-color);
 }
 
+.login-form,
 .signup-form {
   display: flex;
   flex-direction: column;
@@ -143,14 +124,27 @@ header {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
 }
 
+.login-form:hover,
+.signup-form:hover {
+  transform: scale(1.02);
+}
+
+.login-form input,
 .signup-form input {
   margin: 10px 0;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+  border-color: var(--accent-color);
 }
 
 button {
@@ -160,45 +154,40 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #e65c4f;
+  transform: scale(1.05);
 }
 
-.signup-link {
-  margin-top: 10px;
-}
-
-/* discover page/favorites */
+/* Main Discover Page/Favorites */
 .Main {
   display: flex;
   flex-direction: column;
-  padding: auto;
-  margin: 5px;
-  justify-content: center;
+  padding: 20px;
 }
 
 .discover-main {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  align-items: flex-start;
+  justify-content: space-between;
   width: 100%;
-  margin: 5px;
+  margin: 20px 0;
 }
 
 .favorite-main {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin: 5px;
+  height: auto;
+  margin: 20px 0;
   padding: 10px;
 }
 
+/* Recipe Collection */
 .collection-recipes-container {
   overflow-y: auto;
   overflow-x: hidden;
@@ -235,6 +224,11 @@ button:hover {
   color: black;
   background-color: white;
   cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.collection-recipe:hover {
+  transform: scale(1.03);
 }
 
 .collection-recipe img {
@@ -246,6 +240,7 @@ button:hover {
 
 .collection-recipe h3 {
   font-size: 1rem;
+  text-align: center;
 }
 
 .center-column {
@@ -260,16 +255,19 @@ button:hover {
 }
 
 .apply-filters-button {
-  padding: 5px;
+  padding: 10px;
+  margin: 2px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#ingredient {
+  padding: 10px;
   margin: 2px;
   border-radius: 10px;
 }
 
-#ingredient {
-  padding: 5px;
-  margin: 2px;
-  border-radius: 10px;
-}
 .filter-search {
   display: flex;
   flex-direction: column;
@@ -312,28 +310,6 @@ button:hover {
   border-radius: 10px;
 }
 
-/* Un-used atm */
-/* .filter-dropdowns {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.filter-dropdown {
-  display: flex;
-  flex-direction: column;
-}
-
-.filter-dropdown label {
-  margin-bottom: 5px;
-}
-
-select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-} */
 /*  */
 .right-column {
   display: flex;
@@ -444,6 +420,11 @@ input,
   color: black;
   background-color: white;
   cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.recent-recipe:hover {
+  transform: scale(1.03);
 }
 
 .recent-recipe img {
@@ -505,6 +486,7 @@ input,
   padding: 5px;
   border-left: 1px solid;
 }
+
 .Righty {
   padding: 5px;
   border-right: 1px solid;
@@ -540,10 +522,21 @@ input,
   .apply-filters-button {
     padding: 5px;
     border-radius: 10px;
+    width: 50%;
+    margin: auto;
+  }
+
+  .New,
+  .Existing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 
   button {
     padding: 5px;
+    width: 50%; /* Full-width button */
   }
 
   .left-column {
@@ -576,8 +569,8 @@ input,
   }
 
   .recipe-tile img {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     margin: 5px;
   }
@@ -612,6 +605,17 @@ input,
 
   select {
     width: auto;
+  }
+
+  .collection-recipe img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  .collections-list {
+    display: contents;
   }
 
   .FootList {
