@@ -26,7 +26,7 @@ const Footer = () => {
         </li>
         <li className="Link">
           <a
-            href="https://github.com/SergMart7"
+            href="https://sergmart7portfolio.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
